@@ -1,0 +1,6 @@
+{
+  "name": "Lunosfer",
+  "description": "Dream and Vision mapping application.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

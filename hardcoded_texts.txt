@@ -1,0 +1,89 @@
+app/src/main/java/io/lunosfer/dreamap/ui/screens/HomeScreen.kt:                    Text("❤ ${dream.likesCount ?: 0}", color = Color(0xFF94A3B8), fontSize = 12.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/HomeScreen.kt:                        Text("${dream.commentsCount ?: 0}", color = Color(0xFF94A3B8), fontSize = 12.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/HomeScreen.kt:                    Text("AI JUNG", color = AstralGold, fontSize = 9.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                            Text("Tekrar Dene")
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:            title = { Text("URL ile Görsel Ekle", color = AstralGold, fontSize = 16.sp) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                    placeholder = { Text("https://example.com/image.jpg", color = Color.Gray, fontSize = 12.sp) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                    Text("Ekle", color = Color.White)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                    Text("İptal", color = Color.Gray)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                            label = { Text("🤖 AI Kapak", fontSize = 10.sp, color = AstralGold) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                            label = { Text("🖼️ Pixabay", fontSize = 10.sp, color = Color.White) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                            label = { Text("🔗 URL", fontSize = 10.sp, color = Color.White) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                        Text("${state.believersCount} Mana", color = AstralGold, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                        Text("İlerleme", color = Color.Gray, fontSize = 11.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                        Text("%${goal.completionPercentage ?: 0}", color = AstralGold, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                    Text("Yol Haritası (${microGoals.count { it.isCompleted }}/${microGoals.size})", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                        Text("Vizyon Sahibi: ${owner.nameOrFallback}", color = Color.Gray, fontSize = 12.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                    Text("Hedef Durumunu Güncelle", fontSize = 13.sp, color = Color.White)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                        Text("Mana Ver (+1)", color = Void950, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                        Text("Mana Reaksiyonunu Kaldır", fontSize = 12.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:            title = { Text("Vizyonu Sil", color = Color.White) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:            text = { Text("Bu vizyonu ve ilişkili mikro hedefleri silmek istediğinizden emin misiniz?", color = Color.LightGray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                    Text("Sil", color = Color(0xFFF87171))
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                    Text("İptal", color = Color.Gray)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                    placeholder = { Text("Yorum yazın...", color = Color.Gray, fontSize = 12.sp) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:        title = { Text("Vizyon Durumunu Güncelle", color = Color.White, fontWeight = FontWeight.Bold) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                Text("Vizyon sonucunu seçin:", color = Color.LightGray, fontSize = 13.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                        label = { Text("🎉 Tamamlandı", fontSize = 12.sp) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                        label = { Text("Vazgeçtim", fontSize = 12.sp) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                Text("Güncelle", color = Void950, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/GoalDetailScreen.kt:                Text("İptal", color = Color.Gray)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/SpiritualToolsScreen.kt:                                    Text("${data.psychicScore}/100", color = AstralGold, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/SpiritualToolsScreen.kt:                                    Text("%${arch.percentage ?: 0}", color = AstralGold, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryComposerScreen.kt:            Text("İçerik Tipi", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryComposerScreen.kt:                            Text("Galeriden veya Kameradan Seç", color = Color.White, fontSize = 13.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryComposerScreen.kt:                                Text("Medya yükleniyor...", color = Color.Gray, fontSize = 12.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryComposerScreen.kt:                            label = { Text("veya Medya Bağlantısı (URL)", color = Color.Gray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryComposerScreen.kt:                    placeholder = { Text("Neler düşünüyorsun, bugün neler yaptın?", color = Color.Gray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryComposerScreen.kt:                Text("Görünürlük", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryComposerScreen.kt:                    Text("Bir Vizyona Bağla (Opsiyonel)", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryComposerScreen.kt:                                text = { Text("Bağlama (Hiçbiri)", color = Color.Gray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryComposerScreen.kt:                    Text("Günceyi Paylaş", color = Void950, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ExploreScreen.kt:        Text("Keşfet yüklenemedi", color = Color.White, style = MaterialTheme.typography.titleMedium.copy(fontFamily = SerifFontFamily))
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ExploreScreen.kt:            Text("Tekrar Dene")
+app/src/main/java/io/lunosfer/dreamap/ui/screens/DiaryStoryViewerScreen.kt:                        Text("Geri Dön", color = Void950)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                        Text("Yeniden Dene", color = Void950)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                        Text("Arkadaş Ara & Takip Et", color = Color.White, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                        Text("Çıkış Yap", color = Color.White, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                        Text("Gizli Hesap", color = AstralGold, fontSize = 11.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                Text("Düzenle", fontSize = 12.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                    label = { Text("Kullanıcı Adı (3-32 karakter)", color = Color.Gray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                    label = { Text("Görünen Ad (max 60)", color = Color.Gray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                    label = { Text("Profil Resmi URL", color = Color.Gray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                        Text("Gizli Profil", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                        Text("Sadece onayladığın kişiler rüyalarını görebilir", color = Color.Gray, fontSize = 11.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                Text("Cinsiyet", color = AstralGold, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                        Text("İptal")
+app/src/main/java/io/lunosfer/dreamap/ui/screens/ProfileScreen.kt:                            Text("Kaydet", color = Void950, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/MainScreen.kt:                            DropdownMenuItem(text = { Text("Your Auras: 0") }, onClick = { showAuraPopup = false })
+app/src/main/java/io/lunosfer/dreamap/ui/screens/MainScreen.kt:                            DropdownMenuItem(text = { Text("Buy Aura") }, onClick = { showAuraPopup = false })
+app/src/main/java/io/lunosfer/dreamap/ui/screens/MainScreen.kt:                            text = { Text("Ruhsal Araçlar") },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/MainScreen.kt:                        DropdownMenuItem(text = { Text("Settings") }, onClick = { showMoreMenu = false })
+app/src/main/java/io/lunosfer/dreamap/ui/screens/MainScreen.kt:                        DropdownMenuItem(text = { Text("Help & Feedback") }, onClick = { showMoreMenu = false })
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateVisionScreen.kt:                Text("Vizyon Başlığı *", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateVisionScreen.kt:                    placeholder = { Text("Örn: 2026 Sonuna Kadar İspanyolca Öğren", color = Color.Gray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateVisionScreen.kt:                Text("Açıklama (Opsiyonel)", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateVisionScreen.kt:                    placeholder = { Text("Hedefin detayları, neden istiyorsun?", color = Color.Gray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateVisionScreen.kt:                Text("Kapak Görseli (Opsiyonel)", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateVisionScreen.kt:                        Text("🖼️ Pixabay Medya Galerisinden Seç")
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateVisionScreen.kt:                Text("Hedef Tarih (Opsiyonel)", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateVisionScreen.kt:                Text("Görünürlük", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateVisionScreen.kt:                        placeholder = { Text("Adım ekle (ör: Temel A1 kelimeleri)", color = Color.Gray, fontSize = 12.sp) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/PublicProfileScreen.kt:                            Text("Yeniden Dene")
+app/src/main/java/io/lunosfer/dreamap/ui/screens/PublicProfileScreen.kt:                                        Text("Henüz paylaşılan rüya yok.", color = Color.Gray, fontSize = 13.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/PublicProfileScreen.kt:                                            Text("Daha fazla yükle", fontSize = 12.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/PublicProfileScreen.kt:                    Text("Profilin", color = AstralGold, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/PublicProfileScreen.kt:                            Text("Takipte", fontSize = 13.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/PublicProfileScreen.kt:                            Text("Takip İsteği Gönderildi (Bekliyor)", fontSize = 12.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/PublicProfileScreen.kt:                            Text("Takip Et", color = Void950, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/PublicProfileScreen.kt:                        Text("${dream.likesCount ?: 0}", color = Color.Gray, fontSize = 11.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/PublicProfileScreen.kt:                        Text("${dream.commentsCount ?: 0}", color = Color.Gray, fontSize = 11.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateDreamScreen.kt:                            placeholder = { Text("Search Pixabay...") },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateDreamScreen.kt:                    Text("Pixabay'dan Seç", color = AstralGold)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/CreateDreamScreen.kt:                placeholder = { Text("Add tags (press enter or comma)", color = Color.Gray) },
+app/src/main/java/io/lunosfer/dreamap/ui/screens/NotificationsScreen.kt:                            Text("Tümünü Okundu Yap", color = AstralGold, fontSize = 12.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/screens/NotificationsScreen.kt:                            Text("Yeniden Denetle")
+app/src/main/java/io/lunosfer/dreamap/ui/screens/NotificationsScreen.kt:                            Text("Henüz bildiriminiz yok.", color = Color.Gray, fontSize = 14.sp)
+app/src/main/java/io/lunosfer/dreamap/ui/components/ReferralCard.kt:                                val clip = ClipData.newPlainText("Referral Code", code)
+app/src/main/java/io/lunosfer/dreamap/ui/components/ReferralCard.kt:                                placeholder = { Text("KOD123", color = Color.Gray, fontSize = 12.sp) },
+app/src/main/java/io/lunosfer/dreamap/ui/components/VisionGridCard.kt:                    Text("${goal.believersCount ?: 0}", color = AstralGold, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
