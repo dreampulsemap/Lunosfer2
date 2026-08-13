@@ -3,6 +3,9 @@ package io.lunosfer.dreamap.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import io.github.jan.supabase.auth.auth
+import io.lunosfer.dreamap.data.model.Dream
+import io.lunosfer.dreamap.data.model.Goal
+import io.lunosfer.dreamap.data.model.DiaryEntry
 import io.lunosfer.dreamap.data.model.FullUserProfile
 import io.lunosfer.dreamap.data.model.PremiumStatusResponse
 import io.lunosfer.dreamap.data.model.UpdateProfileRequest
@@ -12,12 +15,18 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.async
 
 sealed class ProfileUiState {
     object Loading : ProfileUiState()
     data class Content(
         val profile: FullUserProfile,
         val premiumStatus: PremiumStatusResponse = PremiumStatusResponse(),
+        val dreams: List<Dream> = emptyList(),
+        val visions: List<Goal> = emptyList(),
+        val savedVisions: List<Goal> = emptyList(),
+        val diaryEntries: List<DiaryEntry> = emptyList(),
+        val selectedTab: Int = 0, // 0: Visions, 1: Dreams, 2: Journal, 3: Saved
         val isLoadingPremium: Boolean = false,
         val isSavingProfile: Boolean = false,
         val isEditModalOpen: Boolean = false,
@@ -51,21 +60,27 @@ class ProfileViewModel(
         _state.value = ProfileUiState.Loading
 
         viewModelScope.launch {
-            var fetchedProfile = FullUserProfile(id = uid)
-            repository.getUserProfile(uid).onSuccess {
-                fetchedProfile = it
-            }
-
-            var fetchedPremium = PremiumStatusResponse()
-            repository.getPremiumStatus().onSuccess {
-                fetchedPremium = it
-            }
+            val profileDef = async { repository.getUserProfile(uid).getOrNull() ?: FullUserProfile(id = uid) }
+            val premiumDef = async { repository.getPremiumStatus().getOrNull() ?: PremiumStatusResponse() }
+            val dreamsDef = async { repository.getUserDreams(uid).getOrNull() ?: emptyList() }
+            val visionsDef = async { repository.getUserVisions().getOrNull() ?: emptyList() }
+            val savedDef = async { repository.getSavedVisions().getOrNull() ?: emptyList() }
+            val diaryDef = async { repository.getUserDiary(uid).getOrNull() ?: emptyList() }
 
             _state.value = ProfileUiState.Content(
-                profile = fetchedProfile,
-                premiumStatus = fetchedPremium
+                profile = profileDef.await(),
+                premiumStatus = premiumDef.await(),
+                dreams = dreamsDef.await(),
+                visions = visionsDef.await(),
+                savedVisions = savedDef.await(),
+                diaryEntries = diaryDef.await()
             )
         }
+    }
+
+    fun selectTab(index: Int) {
+        val current = _state.value as? ProfileUiState.Content ?: return
+        _state.value = current.copy(selectedTab = index)
     }
 
     fun openEditModal() {

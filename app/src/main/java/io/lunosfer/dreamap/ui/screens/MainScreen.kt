@@ -254,8 +254,8 @@ fun TopBar(
                         brush = Brush.linearGradient(listOf(AstralGold, AstralAmber)),
                         fontFamily = SerifFontFamily,
                         fontWeight = FontWeight.Bold,
-                        letterSpacing = 4.sp,
-                        fontSize = 20.sp
+                        letterSpacing = 2.sp,
+                        fontSize = 18.sp
                     )
                 )
             }

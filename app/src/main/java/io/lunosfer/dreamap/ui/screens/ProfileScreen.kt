@@ -18,6 +18,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,6 +29,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.stringResource
@@ -120,144 +125,192 @@ fun ProfileScreen(
                 }
             }
             is ProfileUiState.Content -> {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .verticalScroll(rememberScrollState())
-                        .padding(20.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(20.dp)
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(3),
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(bottom = 20.dp)
                 ) {
-                    Text(
-                        text = stringResource(R.string.profile_title),
-                        color = AstralGold,
-                        style = MaterialTheme.typography.headlineMedium.copy(fontFamily = SerifFontFamily)
-                    )
-
-                    // Profile Summary Card
-                    ProfileSummaryCard(
-                        profile = s.profile,
-                        onEditClick = { viewModel.openEditModal() }
-                    )
-
-                    // Notification Permission Banner (if permission denied)
-                    NotificationPermissionBanner()
-
-                    // Premium Status Badge
-                    PremiumStatusCard(status = s.premiumStatus)
-
-                    // AI Özetleri (Haftalık / Aylık)
-                    AISummariesCard()
-
-                    // Arkadaşını Davet Et & Referans Sistemi
-                    ReferralCard()
-
-                    // Journal Action Button
-                    Button(
-                        onClick = onDiaryJournalClick,
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = ButtonDefaults.buttonColors(containerColor = Void900),
-                        border = BorderStroke(1.dp, AstralGold.copy(alpha = 0.5f)),
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Icon(Icons.Default.MenuBook, contentDescription = null, tint = AstralGold)
-                        Spacer(Modifier.width(8.dp))
-                        Text("Kalıcı Günce", color = Color.White, fontWeight = FontWeight.Bold)
-                    }
-
-                    // Social Action Button
-                    Button(
-                        onClick = onAddFriendClick,
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = ButtonDefaults.buttonColors(containerColor = Void900),
-                        border = BorderStroke(1.dp, AetherViolet.copy(alpha = 0.5f)),
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Icon(Icons.Default.PersonSearch, contentDescription = null, tint = AstralGold)
-                        Spacer(Modifier.width(8.dp))
-                        Text(stringResource(R.string.profile_find_friends_btn), color = Color.White, fontWeight = FontWeight.Bold)
-                    }
-
-                    // Language Selection Section
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(16.dp),
-                        colors = CardDefaults.cardColors(containerColor = Void900),
-                        border = BorderStroke(1.dp, Void800)
-                    ) {
+                    item(span = { GridItemSpan(maxLineSpan) }) {
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(16.dp),
-                            verticalArrangement = Arrangement.spacedBy(10.dp)
+                                .padding(20.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(20.dp)
                         ) {
                             Text(
-                                text = stringResource(R.string.profile_language_label),
+                                text = stringResource(R.string.profile_title),
                                 color = AstralGold,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold
+                                style = MaterialTheme.typography.headlineMedium.copy(fontFamily = SerifFontFamily)
                             )
 
-                            languages.chunked(2).forEach { row ->
-                                Row(
-                                    modifier = Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
-                                ) {
-                                    row.forEach { lang ->
-                                        val isSelected = s.profile.language == lang.first
-                                        OutlinedButton(
-                                            onClick = {
-                                                val localeList = LocaleListCompat.forLanguageTags(lang.first)
-                                                AppCompatDelegate.setApplicationLocales(localeList)
+                            ProfileSummaryCard(
+                                profile = s.profile,
+                                onEditClick = { viewModel.openEditModal() }
+                            )
 
-                                                viewModel.updateProfile(
-                                                    username = s.profile.username ?: "",
-                                                    displayName = s.profile.displayName ?: "",
-                                                    avatarUrl = s.profile.avatarUrl ?: "",
-                                                    isPrivate = s.profile.isPrivate,
-                                                    language = lang.first,
-                                                    gender = s.profile.gender ?: "unspecified"
-                                                )
-                                            },
-                                            modifier = Modifier.weight(1f),
-                                            colors = ButtonDefaults.outlinedButtonColors(
-                                                containerColor = if (isSelected) AstralGold.copy(alpha = 0.2f) else Void950,
-                                                contentColor = if (isSelected) AstralGold else Color.White
-                                            ),
-                                            border = BorderStroke(1.dp, if (isSelected) AstralGold else Void800)
-                                        ) {
-                                            Text(lang.second, fontSize = 12.sp)
-                                        }
+                            NotificationPermissionBanner()
+                            PremiumStatusCard(status = s.premiumStatus)
+                            AISummariesCard()
+                            ReferralCard()
+
+                            Button(
+                                onClick = onAddFriendClick,
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(containerColor = Void900),
+                                border = BorderStroke(1.dp, AetherViolet.copy(alpha = 0.5f)),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Icon(Icons.Default.PersonSearch, contentDescription = null, tint = AstralGold)
+                                Spacer(Modifier.width(8.dp))
+                                Text(stringResource(R.string.profile_find_friends_btn), color = Color.White, fontWeight = FontWeight.Bold)
+                            }
+                            
+                            // Logout moved to top right or bottom of this header block
+                            Button(
+                                onClick = {
+                                    coroutineScope.launch {
+                                        supabaseClient.auth.signOut()
+                                        onLogout()
                                     }
-                                    if (row.size == 1) {
-                                        Spacer(Modifier.weight(1f))
-                                    }
-                                }
+                                },
+                                modifier = Modifier.fillMaxWidth(),
+                                colors = ButtonDefaults.buttonColors(containerColor = ShadowWorkRose),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Icon(Icons.Default.Logout, contentDescription = null, tint = Color.White)
+                                Spacer(Modifier.width(8.dp))
+                                Text(stringResource(R.string.profile_logout_btn), color = Color.White, fontWeight = FontWeight.Bold)
                             }
                         }
                     }
 
-                    // Logout Button
-                    Button(
-                        onClick = {
-                            coroutineScope.launch {
-                                supabaseClient.auth.signOut()
-                                onLogout()
+                    // Tabs
+                    item(span = { GridItemSpan(maxLineSpan) }) {
+                        TabRow(
+                            selectedTabIndex = s.selectedTab,
+                            containerColor = Void950,
+                            contentColor = AstralGold,
+                            indicator = { tabPositions ->
+                                TabRowDefaults.Indicator(
+                                    modifier = Modifier.tabIndicatorOffset(tabPositions[s.selectedTab]),
+                                    color = AstralGold
+                                )
                             }
-                        },
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = ButtonDefaults.buttonColors(containerColor = ShadowWorkRose),
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Icon(Icons.Default.Logout, contentDescription = null, tint = Color.White)
-                        Spacer(Modifier.width(8.dp))
-                        Text(stringResource(R.string.profile_logout_btn), color = Color.White, fontWeight = FontWeight.Bold)
+                        ) {
+                            val tabs = listOf("Vizyonlar", "Rüyalar", "Günce", "Kaydedilenler")
+                            tabs.forEachIndexed { index, title ->
+                                Tab(
+                                    selected = s.selectedTab == index,
+                                    onClick = { viewModel.selectTab(index) },
+                                    text = { Text(title, fontSize = 12.sp, fontWeight = if (s.selectedTab == index) FontWeight.Bold else FontWeight.Normal) },
+                                    selectedContentColor = AstralGold,
+                                    unselectedContentColor = Color.Gray
+                                )
+                            }
+                        }
                     }
 
-                    Spacer(Modifier.height(16.dp))
+                    // Grid Items
+                    when (s.selectedTab) {
+                        0 -> {
+                            if (s.visions.isEmpty()) {
+                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage("Henüz vizyonunuz yok.") }
+                            } else {
+                                items(s.visions) { goal ->
+                                    ProfileGridItem(
+                                        imageUrl = goal.coverImageUrl,
+                                        title = goal.title,
+                                        onClick = { /* Handle goal click */ }
+                                    )
+                                }
+                            }
+                        }
+                        1 -> {
+                            if (s.dreams.isEmpty()) {
+                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage("Henüz rüyanız yok.") }
+                            } else {
+                                items(s.dreams) { dream ->
+                                    ProfileGridItem(
+                                        imageUrl = dream.aiImageUrl,
+                                        title = dream.displayTitle,
+                                        onClick = { /* Handle dream click */ }
+                                    )
+                                }
+                            }
+                        }
+                        2 -> {
+                            if (s.diaryEntries.isEmpty()) {
+                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage("Henüz günce kaydınız yok.") }
+                            } else {
+                                items(s.diaryEntries) { entry ->
+                                    ProfileGridItem(
+                                        imageUrl = entry.posterUrl ?: entry.mediaUrl,
+                                        title = entry.caption ?: "Günce Kaydı",
+                                        onClick = onDiaryJournalClick
+                                    )
+                                }
+                            }
+                        }
+                        3 -> {
+                            if (s.savedVisions.isEmpty()) {
+                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage("Henüz kaydedilmiş vizyonunuz yok.") }
+                            } else {
+                                items(s.savedVisions) { goal ->
+                                    ProfileGridItem(
+                                        imageUrl = goal.coverImageUrl,
+                                        title = goal.title,
+                                        onClick = { /* Handle goal click */ }
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
 
-                // Edit Profile Dialog
+@Composable
+fun ProfileGridItem(imageUrl: String?, title: String?, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .aspectRatio(1f)
+            .padding(2.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .background(Void900)
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
+    ) {
+        if (!imageUrl.isNullOrBlank()) {
+            AsyncImage(
+                model = imageUrl,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+        } else {
+            Text(
+                text = title ?: "",
+                color = Color.White,
+                fontSize = 12.sp,
+                maxLines = 2,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun EmptyGridMessage(message: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(32.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(text = message, color = Color.Gray, fontSize = 14.sp)
+    }
+}
+
+                                // Edit Profile Dialog
                 if (s.isEditModalOpen) {
                     EditProfileDialog(
                         profile = s.profile,
@@ -711,5 +764,48 @@ private fun NotificationPermissionBanner() {
                 )
             }
         }
+    }
+}
+
+@Composable
+fun ProfileGridItem(imageUrl: String?, title: String?, onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .aspectRatio(1f)
+            .padding(2.dp)
+            .clip(RoundedCornerShape(8.dp))
+            .background(Void900)
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center
+    ) {
+        if (!imageUrl.isNullOrBlank()) {
+            AsyncImage(
+                model = imageUrl,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+        } else {
+            Text(
+                text = title ?: "",
+                color = Color.White,
+                fontSize = 12.sp,
+                maxLines = 2,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun EmptyGridMessage(message: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(32.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(text = message, color = Color.Gray, fontSize = 14.sp)
     }
 }

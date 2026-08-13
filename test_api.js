@@ -1,27 +1,14 @@
-const https = require('https');
-const API_KEY = process.env.GEMINI_API_KEY;
-
-const data = JSON.stringify({
-  contents: [{ parts: [{ text: "Hello" }] }]
-});
-
-const options = {
-  hostname: 'generativelanguage.googleapis.com',
-  path: `/v1beta/models/gemini-3.5-flash:generateContent?key=${API_KEY}`,
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Content-Length': data.length
+const fetch = require('node-fetch');
+async function test() {
+  const url = "https://lunosfer.com/api/goals/list?mode=own&page=0";
+  console.log("Fetching", url);
+  try {
+    const res = await fetch(url);
+    console.log(res.status);
+    const json = await res.json();
+    console.log(Object.keys(json));
+  } catch (e) {
+    console.error(e);
   }
-};
-
-const req = https.request(options, (res) => {
-  let result = '';
-  res.on('data', (d) => { result += d; });
-  res.on('end', () => {
-    console.log("Status:", res.statusCode);
-    console.log(result);
-  });
-});
-req.write(data);
-req.end();
+}
+test();

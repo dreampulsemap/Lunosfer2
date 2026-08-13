@@ -39,6 +39,26 @@ class ProfileRepository {
         )
     }
 
+    suspend fun getUserDreams(userId: String): Result<List<io.lunosfer.dreamap.data.model.Dream>> = runCatching {
+        val res = api.getPublicProfile(userId = userId, page = 0)
+        res.dreams
+    }
+
+    suspend fun getUserVisions(): Result<List<io.lunosfer.dreamap.data.model.Goal>> = runCatching {
+        val res = api.getGoalsFeed(mode = "own", page = 0, status = null)
+        res.goals
+    }
+
+    suspend fun getSavedVisions(): Result<List<io.lunosfer.dreamap.data.model.Goal>> = runCatching {
+        val res = api.getGoalsFeed(mode = "saved", page = 0, status = null)
+        res.goals
+    }
+
+    suspend fun getUserDiary(userId: String): Result<List<io.lunosfer.dreamap.data.model.DiaryEntry>> = runCatching {
+        val res = api.getDiaryListForUser(userId)
+        res.entries
+    }
+
     suspend fun updateProfile(request: UpdateProfileRequest): Result<FullUserProfile> = runCatching {
         try {
             val res = api.updateProfile(request)
