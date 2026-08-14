@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import io.github.jan.supabase.auth.auth
 import io.lunosfer.dreamap.data.model.Dream
 import io.lunosfer.dreamap.data.model.Goal
-import io.lunosfer.dreamap.data.model.DiaryEntry
 import io.lunosfer.dreamap.data.model.FullUserProfile
 import io.lunosfer.dreamap.data.model.PremiumStatusResponse
 import io.lunosfer.dreamap.data.model.UpdateProfileRequest
@@ -25,8 +24,7 @@ sealed class ProfileUiState {
         val dreams: List<Dream> = emptyList(),
         val visions: List<Goal> = emptyList(),
         val savedVisions: List<Goal> = emptyList(),
-        val diaryEntries: List<DiaryEntry> = emptyList(),
-        val selectedTab: Int = 0, // 0: Visions, 1: Dreams, 2: Journal, 3: Saved
+        val selectedTab: Int = 0, // 0: Visions, 1: Dreams, 2: Journal (navigates away, never "selected"), 3: Saved
         val isLoadingPremium: Boolean = false,
         val isSavingProfile: Boolean = false,
         val isEditModalOpen: Boolean = false,
@@ -65,15 +63,13 @@ class ProfileViewModel(
             val dreamsDef = async { repository.getUserDreams(uid).getOrNull() ?: emptyList() }
             val visionsDef = async { repository.getUserVisions().getOrNull() ?: emptyList() }
             val savedDef = async { repository.getSavedVisions().getOrNull() ?: emptyList() }
-            val diaryDef = async { repository.getUserDiary(uid).getOrNull() ?: emptyList() }
 
             _state.value = ProfileUiState.Content(
                 profile = profileDef.await(),
                 premiumStatus = premiumDef.await(),
                 dreams = dreamsDef.await(),
                 visions = visionsDef.await(),
-                savedVisions = savedDef.await(),
-                diaryEntries = diaryDef.await()
+                savedVisions = savedDef.await()
             )
         }
     }
