@@ -198,11 +198,16 @@ fun ProfileScreen(
                                 )
                             }
                         ) {
-                            val tabs = listOf("Vizyonlar", "Rüyalar", "Günce", "Kaydedilenler")
+                            val tabs = listOf(
+                                stringResource(R.string.profile_tab_visions),
+                                stringResource(R.string.profile_tab_dreams),
+                                stringResource(R.string.profile_tab_journal),
+                                stringResource(R.string.profile_tab_saved)
+                            )
                             tabs.forEachIndexed { index, title ->
                                 Tab(
                                     selected = s.selectedTab == index,
-                                    onClick = { viewModel.selectTab(index) },
+                                    onClick = { if (index == 2) onDiaryJournalClick() else viewModel.selectTab(index) },
                                     text = { Text(title, fontSize = 12.sp, fontWeight = if (s.selectedTab == index) FontWeight.Bold else FontWeight.Normal) },
                                     selectedContentColor = AstralGold,
                                     unselectedContentColor = Color.Gray
@@ -215,7 +220,7 @@ fun ProfileScreen(
                     when (s.selectedTab) {
                         0 -> {
                             if (s.visions.isEmpty()) {
-                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage("Henüz vizyonunuz yok.") }
+                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage(stringResource(R.string.profile_empty_visions)) }
                             } else {
                                 items(s.visions) { goal ->
                                     ProfileGridItem(
@@ -228,7 +233,7 @@ fun ProfileScreen(
                         }
                         1 -> {
                             if (s.dreams.isEmpty()) {
-                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage("Henüz rüyanız yok.") }
+                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage(stringResource(R.string.profile_empty_dreams)) }
                             } else {
                                 items(s.dreams) { dream ->
                                     ProfileGridItem(
@@ -239,22 +244,9 @@ fun ProfileScreen(
                                 }
                             }
                         }
-                        2 -> {
-                            if (s.diaryEntries.isEmpty()) {
-                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage("Henüz günce kaydınız yok.") }
-                            } else {
-                                items(s.diaryEntries) { entry ->
-                                    ProfileGridItem(
-                                        imageUrl = entry.posterUrl ?: entry.mediaUrl,
-                                        title = entry.caption ?: "Günce Kaydı",
-                                        onClick = onDiaryJournalClick
-                                    )
-                                }
-                            }
-                        }
                         3 -> {
                             if (s.savedVisions.isEmpty()) {
-                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage("Henüz kaydedilmiş vizyonunuz yok.") }
+                                item(span = { GridItemSpan(maxLineSpan) }) { EmptyGridMessage(stringResource(R.string.profile_empty_saved)) }
                             } else {
                                 items(s.savedVisions) { goal ->
                                     ProfileGridItem(

@@ -151,7 +151,7 @@ fun PublicProfileScreen(
                                 ) {
                                     Icon(Icons.Default.MenuBook, contentDescription = null, modifier = Modifier.size(14.dp))
                                     Spacer(Modifier.width(4.dp))
-                                    Text("Günlük Defteri", fontSize = 12.sp)
+                                    Text(stringResource(R.string.profile_tab_journal), fontSize = 12.sp)
                                 }
                             }
                         }

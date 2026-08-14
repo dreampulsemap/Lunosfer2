@@ -15,15 +15,83 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import io.lunosfer.dreamap.R
 import io.lunosfer.dreamap.data.model.DiaryEntry
 import io.lunosfer.dreamap.ui.theme.*
 import io.lunosfer.dreamap.ui.viewmodel.DiaryJournalUiState
 import io.lunosfer.dreamap.ui.viewmodel.DiaryJournalViewModel
+import io.lunosfer.dreamap.ui.viewmodel.UNKNOWN_DATE_KEY
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import java.util.TimeZone
+
+// Profildeki KALICI Günce ekranı. Üstteki halka/hikaye şeridi bilinçli
+// olarak Instagram diliyle konuşur (bkz. DiaryRingsBar) — hızlı, günlük,
+// 24 saatte söner. Burası tam tersi: otomatik ilerleme yok, halka/avatar
+// yok — tarihe göre gruplanmış, kendi hızında okunan kalıcı bir arşiv.
+
+// ThreadScreen.kt'deki parseSupabaseTimestamp/dayLabel/timeLabel ile aynı
+// desen (bu dosyaya özel — Kotlin'de private top-level fonksiyonlar dosyalar
+// arası paylaşılamıyor).
+private fun parseSupabaseTimestamp(isoTimestamp: String): java.util.Date? {
+    return try {
+        val withoutOffset = isoTimestamp
+            .replace(Regex("[+-]\\d{2}:\\d{2}$"), "")
+            .removeSuffix("Z")
+        val truncated = if (withoutOffset.contains(".")) {
+            val (base, fraction) = withoutOffset.split(".", limit = 2)
+            base + "." + fraction.take(3).padEnd(3, '0')
+        } else {
+            "$withoutOffset.000"
+        }
+        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS", Locale.US).apply {
+            timeZone = TimeZone.getTimeZone("UTC")
+        }
+        format.parse(truncated)
+    } catch (e: Exception) {
+        null
+    }
+}
+
+private fun entryTimeLabel(isoTimestamp: String?): String {
+    val date = isoTimestamp?.let { parseSupabaseTimestamp(it) } ?: return ""
+    val formatter = SimpleDateFormat("HH:mm", Locale.getDefault()).apply {
+        timeZone = TimeZone.getDefault()
+    }
+    return formatter.format(date)
+}
+
+// dateKey "yyyy-MM-dd" formatında (bkz. DiaryJournalViewModel) ya da
+// UNKNOWN_DATE_KEY. Bugün/Dün ikisi de cihazın yerel saat dilimine göre
+// hesaplanır.
+private fun dayGroupLabel(dateKey: String, todayLabel: String, yesterdayLabel: String, unknownLabel: String): String {
+    if (dateKey == UNKNOWN_DATE_KEY) return unknownLabel
+    val parsed = try {
+        SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(dateKey)
+    } catch (e: Exception) {
+        null
+    } ?: return dateKey
+
+    fun sameDay(a: Calendar, b: Calendar) =
+        a.get(Calendar.YEAR) == b.get(Calendar.YEAR) && a.get(Calendar.DAY_OF_YEAR) == b.get(Calendar.DAY_OF_YEAR)
+
+    val cal = Calendar.getInstance().apply { time = parsed }
+    val today = Calendar.getInstance()
+    val yesterday = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, -1) }
+
+    return when {
+        sameDay(cal, today) -> todayLabel
+        sameDay(cal, yesterday) -> yesterdayLabel
+        else -> SimpleDateFormat("d MMMM yyyy", Locale.getDefault()).format(parsed)
+    }
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,19 +104,23 @@ fun DiaryJournalScreen(
     val viewModel: DiaryJournalViewModel = viewModel(factory = factory)
     val state by viewModel.state.collectAsState()
 
+    val todayLabel = stringResource(R.string.diary_journal_today)
+    val yesterdayLabel = stringResource(R.string.diary_journal_yesterday)
+    val unknownLabel = stringResource(R.string.diary_journal_unknown_date)
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Text(
-                        "Kalıcı Günce",
+                        stringResource(R.string.diary_journal_title),
                         color = Color.White,
                         style = MaterialTheme.typography.titleMedium.copy(fontFamily = SerifFontFamily)
                     )
                 },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Geri", tint = Color.White)
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.diary_journal_back), tint = Color.White)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Void950)
@@ -78,20 +150,31 @@ fun DiaryJournalScreen(
                             onClick = { viewModel.loadEntries() },
                             colors = ButtonDefaults.outlinedButtonColors(contentColor = AstralGold)
                         ) {
-                            Text("Tekrar Dene")
+                            Text(stringResource(R.string.diary_journal_retry))
                         }
                     }
                 }
                 is DiaryJournalUiState.Success -> {
                     if (s.groupedEntries.isEmpty()) {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(32.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
                         ) {
                             Text(
-                                text = "Henüz günce kaydı yok.",
+                                text = stringResource(R.string.diary_journal_empty_title),
+                                color = Color.White,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(Modifier.height(6.dp))
+                            Text(
+                                text = stringResource(R.string.diary_journal_empty_body),
                                 color = Color.Gray,
-                                fontSize = 14.sp
+                                fontSize = 13.sp,
+                                lineHeight = 18.sp
                             )
                         }
                     } else {
@@ -100,10 +183,10 @@ fun DiaryJournalScreen(
                             contentPadding = PaddingValues(16.dp),
                             verticalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
-                            s.groupedEntries.forEach { (date, entries) ->
+                            s.groupedEntries.forEach { (dateKey, entries) ->
                                 item {
                                     Text(
-                                        text = date,
+                                        text = dayGroupLabel(dateKey, todayLabel, yesterdayLabel, unknownLabel),
                                         color = AstralGold,
                                         fontSize = 18.sp,
                                         fontWeight = FontWeight.Bold,
@@ -144,12 +227,12 @@ private fun JournalEntryCard(entry: DiaryEntry) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = entry.createdAt?.take(16)?.replace("T", " ")?.substringAfter(" ") ?: "",
+                    text = entryTimeLabel(entry.createdAt),
                     color = Color.Gray,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Medium
                 )
-                
+
                 // Privacy indicator
                 if (entry.visibility == "private") {
                     Box(
@@ -158,7 +241,7 @@ private fun JournalEntryCard(entry: DiaryEntry) {
                             .background(Void800)
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
-                        Text("Gizli", color = AstralGold, fontSize = 10.sp)
+                        Text(stringResource(R.string.diary_journal_private_badge), color = AstralGold, fontSize = 10.sp)
                     }
                 } else {
                     Box(
@@ -167,7 +250,7 @@ private fun JournalEntryCard(entry: DiaryEntry) {
                             .background(AetherCyan.copy(alpha = 0.2f))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
-                        Text("Herkese Açık", color = AetherCyan, fontSize = 10.sp)
+                        Text(stringResource(R.string.diary_journal_public_badge), color = AetherCyan, fontSize = 10.sp)
                     }
                 }
             }
@@ -196,11 +279,11 @@ private fun JournalEntryCard(entry: DiaryEntry) {
                     lineHeight = 20.sp
                 )
             }
-            
+
             // Goal Tag
             if (!entry.goalTitle.isNullOrBlank()) {
                 Text(
-                    text = "Hedef: ${entry.goalTitle}",
+                    text = stringResource(R.string.diary_journal_goal_prefix, entry.goalTitle),
                     color = AetherIndigo,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Medium
