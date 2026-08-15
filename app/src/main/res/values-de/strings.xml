@@ -368,6 +368,12 @@
     <string name="goal_detail_delete_btn">Löschen</string>
     <string name="goal_detail_comment_placeholder">Kommentar schreiben...</string>
     <string name="goal_detail_update_status_title">Visionsstatus aktualisieren</string>
+    <string name="goal_detail_status_completed">🎉 Abgeschlossen</string>
+    <string name="goal_detail_status_abandoned">Aufgegeben</string>
+    <string name="goal_detail_status_active">Aktiv</string>
+    <string name="goal_detail_translating">Übersetzung läuft...</string>
+    <string name="goal_detail_see_original">Original anzeigen</string>
+    <string name="goal_detail_translate">🌐 Übersetzen</string>
     <string name="goal_detail_select_outcome">Wähle das Ergebnis der Vision:</string>
     <string name="goal_detail_completed_chip">🎉 Abgeschlossen</string>
     <string name="goal_detail_abandoned_chip">Aufgegeben</string>
