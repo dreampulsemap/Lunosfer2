@@ -21,6 +21,7 @@ sealed class ProfileUiState {
     data class Content(
         val profile: FullUserProfile,
         val premiumStatus: PremiumStatusResponse = PremiumStatusResponse(),
+        val stats: io.lunosfer.dreamap.data.model.ProfileStatsResponse = io.lunosfer.dreamap.data.model.ProfileStatsResponse(),
         val dreams: List<Dream> = emptyList(),
         val visions: List<Goal> = emptyList(),
         val savedVisions: List<Goal> = emptyList(),
@@ -60,6 +61,7 @@ class ProfileViewModel(
         viewModelScope.launch {
             val profileDef = async { repository.getUserProfile(uid).getOrNull() ?: FullUserProfile(id = uid) }
             val premiumDef = async { repository.getPremiumStatus().getOrNull() ?: PremiumStatusResponse() }
+            val statsDef = async { repository.getProfileStats().getOrNull() ?: io.lunosfer.dreamap.data.model.ProfileStatsResponse() }
             val dreamsDef = async { repository.getUserDreams(uid).getOrNull() ?: emptyList() }
             val visionsDef = async { repository.getUserVisions().getOrNull() ?: emptyList() }
             val savedDef = async { repository.getSavedVisions().getOrNull() ?: emptyList() }
@@ -67,6 +69,7 @@ class ProfileViewModel(
             _state.value = ProfileUiState.Content(
                 profile = profileDef.await(),
                 premiumStatus = premiumDef.await(),
+                stats = statsDef.await(),
                 dreams = dreamsDef.await(),
                 visions = visionsDef.await(),
                 savedVisions = savedDef.await()
