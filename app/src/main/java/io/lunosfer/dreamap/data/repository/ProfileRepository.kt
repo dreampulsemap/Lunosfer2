@@ -76,6 +76,10 @@ class ProfileRepository {
         api.getPremiumStatus()
     }
 
+    suspend fun getProfileStats(): Result<io.lunosfer.dreamap.data.model.ProfileStatsResponse> = runCatching {
+        api.getProfileStats()
+    }
+
     private fun parseHttpError(e: HttpException): String {
         val errorBody = e.response()?.errorBody()?.string()
         if (!errorBody.isNullOrBlank()) {
