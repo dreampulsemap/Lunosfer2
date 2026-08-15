@@ -342,7 +342,10 @@
     <string name="error_no_session">لم يتم العثور على جلسة. يرجى تسجيل الدخول.</string>
     <string name="error_daily_compass_failed">تعذّر الحصول على البوصلة اليومية</string>
     <string name="app_lang_code">ar</string>
-    <string name="diary_ring_self">أنت</string>
+    <string name="diary_ring_self">أنت</string>    <string name="home_streak_days">تتابع: %1$d يوم</string>
+    <string name="home_streak_start">بدأ التتابع: %1$s</string>
+    <string name="home_welcome_summary">مرحباً بعودتك! لديك %1$d إشعارات جديدة.</string>
+
 </resources>
     <string name="goal_detail_retry">أعد المحاولة</string>
     <string name="goal_detail_add_image_url">إضافة صورة عبر رابط</string>
