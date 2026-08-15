@@ -103,6 +103,7 @@ dependencies {
   implementation("com.squareup.retrofit2:converter-kotlinx-serialization:2.12.0")
   implementation(libs.firebase.ai)
   implementation(libs.firebase.messaging)
+  implementation(libs.billing.ktx)
   // Uncomment to use Firestore:
   // implementation(libs.firebase.firestore)
 
