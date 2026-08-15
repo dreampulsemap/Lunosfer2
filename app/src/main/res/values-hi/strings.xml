@@ -375,4 +375,8 @@
     <string name="goal_detail_victory_story">जीत की कहानी (वैकल्पिक)</string>
     <string name="goal_detail_abandon_reason">त्याग का कारण (वैकल्पिक)</string>
 <string name="vision_status_abandoned">छोड़ दिया गया</string>
+    <string name="profile_date_soon">जल्द ही</string>
+    <string name="profile_gender_female">महिला</string>
+    <string name="profile_gender_male">पुरुष</string>
+    <string name="profile_gender_unspecified">मैं बताना नहीं चाहता/चाहती</string>
 </resources>
