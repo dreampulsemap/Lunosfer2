@@ -377,4 +377,5 @@
     <string name="profile_gender_female">女性</string>
     <string name="profile_gender_male">男性</string>
     <string name="profile_gender_unspecified">回答しない</string>
+    <string name="auth_or_separator">— または —</string>
 </resources>
