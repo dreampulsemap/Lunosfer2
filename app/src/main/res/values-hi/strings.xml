@@ -369,6 +369,12 @@
     <string name="goal_detail_update_status_title">विजन स्थिति अपडेट करें</string>
     <string name="goal_detail_select_outcome">विजन का परिणाम चुनें:</string>
     <string name="goal_detail_completed_chip">🎉 पूर्ण</string>
+    <string name="goal_detail_status_completed">🎉 पूर्ण</string>
+    <string name="goal_detail_status_abandoned">छोड़ दिया गया</string>
+    <string name="goal_detail_status_active">सक्रिय</string>
+    <string name="goal_detail_translating">अनुवाद हो रहा है...</string>
+    <string name="goal_detail_see_original">मूल देखें</string>
+    <string name="goal_detail_translate">🌐 अनुवाद करें</string>
     <string name="goal_detail_abandoned_chip">छोड़ दिया गया</string>
     <string name="goal_detail_update_btn">अपडेट करें</string>
     <string name="goal_detail_default_user">उपयोगकर्ता</string>
