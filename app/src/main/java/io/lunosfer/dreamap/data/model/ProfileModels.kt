@@ -42,7 +42,8 @@ data class UpdateProfileResponse(
 data class PremiumStatusResponse(
     val isPremium: Boolean = false,
     val canPickVideo: Boolean = true,
-    val nextAvailableAt: String? = null
+    val nextAvailableAt: String? = null,
+    val auraBalance: Int = 0
 )
 
 /** pages/api/profile-stats.js. Alan adları web tarafındaki camelCase JSON ile birebir eşleşiyor (@SerialName gerekmez). */
