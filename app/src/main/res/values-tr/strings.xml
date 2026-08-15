@@ -212,6 +212,12 @@
     <string name="profile_logout_btn">Çıkış Yap</string>
     <string name="profile_private_badge">Gizli Hesap</string>
     <string name="profile_edit_action">Düzenle</string>
+    <string name="profile_stat_engagement">Etkileşim</string>
+    <string name="profile_stat_engagement_empty">İlk rüyanı paylaş, fark edil</string>
+    <string name="profile_stat_comments">Yorum</string>
+    <string name="profile_stat_comments_empty">Henüz yorum yok</string>
+    <string name="profile_stat_friends">Arkadaş</string>
+    <string name="profile_stat_friends_empty">İlk arkadaşını bul</string>
     <string name="profile_edit_username_label">Kullanıcı Adı (3-32 karakter)</string>
     <string name="profile_edit_display_name_label">Görünen Ad (max 60)</string>
     <string name="profile_edit_avatar_url_label">Profil Resmi URL</string>
