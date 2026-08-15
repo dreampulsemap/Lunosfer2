@@ -403,3 +403,4 @@
     <string name="profile_gender_male">Erkek</string>
     <string name="profile_gender_unspecified">Belirtmek İstemiyorum</string>
     <string name="vision_status_abandoned">VAZGEÇILDİ</string>
+    <string name="auth_or_separator">— VEYA —</string>
