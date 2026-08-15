@@ -366,6 +366,11 @@
     <string name="goal_detail_update_status_title">Mettre à Jour le Statut de la Vision</string>
     <string name="goal_detail_select_outcome">Sélectionnez le résultat de la vision :</string>
     <string name="goal_detail_completed_chip">🎉 Terminé</string>
+    <string name="goal_detail_status_completed">🎉 Terminé</string>
+    <string name="goal_detail_status_abandoned">Abandonné</string>
+    <string name="goal_detail_status_active">Actif</string>
+    <string name="goal_detail_translating">Traduction en cours...</string>
+    <string name="goal_detail_see_original">Voir l\'original</string>    <string name="goal_detail_translate">🌐 Traduire</string>
     <string name="goal_detail_abandoned_chip">Abandonné</string>
     <string name="goal_detail_update_btn">Mettre à Jour</string>
     <string name="goal_detail_default_user">Utilisateur</string>
