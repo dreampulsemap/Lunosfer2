@@ -44,3 +44,11 @@ data class PremiumStatusResponse(
     val canPickVideo: Boolean = true,
     val nextAvailableAt: String? = null
 )
+
+/** pages/api/profile-stats.js. Alan adları web tarafındaki camelCase JSON ile birebir eşleşiyor (@SerialName gerekmez). */
+@Serializable
+data class ProfileStatsResponse(
+    val totalEngagement: Int = 0,
+    val totalComments: Int = 0,
+    val friendsCount: Int = 0
+)
