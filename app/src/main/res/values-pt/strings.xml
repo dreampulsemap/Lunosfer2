@@ -385,4 +385,7 @@
     <string name="profile_gender_female">Feminino</string>
     <string name="profile_gender_male">Masculino</string>
     <string name="profile_gender_unspecified">Prefiro não dizer</string>
+    <string name="home_streak_days">Sequência: %1$d dias</string>
+    <string name="home_streak_start">Sequência iniciada: %1$s</string>
+    <string name="home_welcome_summary">Bem-vindo de volta! Você tem %1$d novas notificações.</string>
 </resources>
