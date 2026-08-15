@@ -36,6 +36,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -146,12 +148,13 @@ fun ProfileScreen(
 
                             ProfileSummaryCard(
                                 profile = s.profile,
+                                stats = s.stats,
                                 onEditClick = { viewModel.openEditModal() }
                             )
 
                             NotificationPermissionBanner()
-                            PremiumStatusCard(status = s.premiumStatus)
                             AISummariesCard()
+                            PremiumStatusCard(status = s.premiumStatus)
                             ReferralCard()
 
                             Button(
@@ -330,84 +333,186 @@ fun EmptyGridMessage(message: String) {
 @Composable
 private fun ProfileSummaryCard(
     profile: FullUserProfile,
+    stats: io.lunosfer.dreamap.data.model.ProfileStatsResponse,
     onEditClick: () -> Unit
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(24.dp),
         colors = CardDefaults.cardColors(containerColor = Void900),
-        border = BorderStroke(1.dp, Void800)
+        border = BorderStroke(1.dp, AstralGold.copy(alpha = 0.25f))
     ) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            if (!profile.avatarUrl.isNullOrBlank()) {
-                AsyncImage(
-                    model = profile.avatarUrl,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .size(64.dp)
-                        .clip(CircleShape)
-                        .border(2.dp, AstralGold, CircleShape)
-                )
-            } else {
-                Box(
-                    modifier = Modifier
-                        .size(64.dp)
-                        .clip(CircleShape)
-                        .background(AstralGold.copy(alpha = 0.2f))
-                        .border(2.dp, AstralGold, CircleShape),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = profile.nameOrFallback.take(1).uppercase(),
-                        color = AstralGold,
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
+                .background(
+                    Brush.linearGradient(
+                        colors = listOf(
+                            AstralGold.copy(alpha = 0.10f),
+                            AetherViolet.copy(alpha = 0.06f),
+                            Color.Transparent
+                        )
                     )
-                }
-            }
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = profile.nameOrFallback,
-                    color = Color.White,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
                 )
-                Text(
-                    text = "@${profile.username ?: "user"}",
-                    color = Color.Gray,
-                    fontSize = 12.sp
-                )
-
-                if (profile.isPrivate) {
-                    Spacer(Modifier.height(4.dp))
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(Icons.Default.Lock, contentDescription = null, tint = AstralGold, modifier = Modifier.size(12.dp))
-                        Spacer(Modifier.width(4.dp))
-                        Text(stringResource(R.string.profile_private_badge), color = AstralGold, fontSize = 11.sp)
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                if (!profile.avatarUrl.isNullOrBlank()) {
+                    AsyncImage(
+                        model = profile.avatarUrl,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(68.dp)
+                            .shadow(10.dp, CircleShape, spotColor = AstralGold, ambientColor = AstralGold)
+                            .clip(CircleShape)
+                            .border(2.dp, AstralGold, CircleShape)
+                    )
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .size(68.dp)
+                            .shadow(10.dp, CircleShape, spotColor = AstralGold, ambientColor = AstralGold)
+                            .clip(CircleShape)
+                            .background(AstralGold.copy(alpha = 0.2f))
+                            .border(2.dp, AstralGold, CircleShape),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = profile.nameOrFallback.take(1).uppercase(),
+                            color = AstralGold,
+                            fontSize = 26.sp,
+                            fontWeight = FontWeight.Bold
+                        )
                     }
                 }
+
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = profile.nameOrFallback,
+                        color = Color.White,
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "@${profile.username ?: "user"}",
+                        color = Color.Gray,
+                        fontSize = 12.sp
+                    )
+
+                    if (!profile.bio.isNullOrBlank()) {
+                        Spacer(Modifier.height(6.dp))
+                        Text(
+                            text = profile.bio,
+                            color = Color(0xFFCBD5E1),
+                            fontSize = 12.5.sp,
+                            lineHeight = 16.sp,
+                            maxLines = 2,
+                            overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis
+                        )
+                    }
+
+                    if (profile.isPrivate) {
+                        Spacer(Modifier.height(4.dp))
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(Icons.Default.Lock, contentDescription = null, tint = AstralGold, modifier = Modifier.size(12.dp))
+                            Spacer(Modifier.width(4.dp))
+                            Text(stringResource(R.string.profile_private_badge), color = AstralGold, fontSize = 11.sp)
+                        }
+                    }
+                }
+
+                OutlinedButton(
+                    onClick = onEditClick,
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = AstralGold),
+                    border = BorderStroke(1.dp, AstralGold),
+                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp)
+                ) {
+                    Icon(Icons.Default.Edit, contentDescription = null, modifier = Modifier.size(14.dp))
+                    Spacer(Modifier.width(4.dp))
+                    Text(stringResource(R.string.profile_edit_action), fontSize = 12.sp)
+                }
             }
 
-            OutlinedButton(
-                onClick = onEditClick,
-                colors = ButtonDefaults.outlinedButtonColors(contentColor = AstralGold),
-                border = BorderStroke(1.dp, AstralGold),
-                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp)
-            ) {
-                Icon(Icons.Default.Edit, contentDescription = null, modifier = Modifier.size(14.dp))
-                Spacer(Modifier.width(4.dp))
-                Text(stringResource(R.string.profile_edit_action), fontSize = 12.sp)
-            }
+            HorizontalDivider(color = Color.White.copy(alpha = 0.06f))
+
+            ProfileStatsRow(stats = stats)
         }
     }
+}
+
+/**
+ * Sosyal kanıt şeridi — PublicProfileScreen'de zaten var olan like/yorum
+ * gösterimlerinin kendi profildeki karşılığı (bkz. bu ekranın davranış
+ * psikolojisi analizi: kullanıcı başkasının etkisini görüyordu, kendininkini
+ * hiç göremiyordu). Sıfır durumunda cesaret kırıcı "0" yerine teşvik edici
+ * bir mikro-metin gösteriyoruz — yeni bir kullanıcıya "0 etkileşim" göstermek
+ * olumsuz bir ilk izlenim yaratır, oysa "henüz başlıyor" çerçevesi daha
+ * davetkâr.
+ */
+@Composable
+private fun ProfileStatsRow(stats: io.lunosfer.dreamap.data.model.ProfileStatsResponse) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 14.dp),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        ProfileStatItem(
+            value = stats.totalEngagement,
+            label = stringResource(R.string.profile_stat_engagement),
+            emptyLabel = stringResource(R.string.profile_stat_engagement_empty)
+        )
+        VerticalDivider(modifier = Modifier.height(32.dp), color = Color.White.copy(alpha = 0.08f))
+        ProfileStatItem(
+            value = stats.totalComments,
+            label = stringResource(R.string.profile_stat_comments),
+            emptyLabel = stringResource(R.string.profile_stat_comments_empty)
+        )
+        VerticalDivider(modifier = Modifier.height(32.dp), color = Color.White.copy(alpha = 0.08f))
+        ProfileStatItem(
+            value = stats.friendsCount,
+            label = stringResource(R.string.profile_stat_friends),
+            emptyLabel = stringResource(R.string.profile_stat_friends_empty)
+        )
+    }
+}
+
+@Composable
+private fun ProfileStatItem(value: Int, label: String, emptyLabel: String) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        if (value > 0) {
+            Text(
+                text = formatStatNumber(value),
+                color = AstralGold,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = SerifFontFamily
+            )
+            Text(text = label, color = Color.Gray, fontSize = 11.sp)
+        } else {
+            Text(
+                text = emptyLabel,
+                color = Color(0xFF64748B),
+                fontSize = 11.sp,
+                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                lineHeight = 14.sp,
+                modifier = Modifier.widthIn(max = 80.dp)
+            )
+        }
+    }
+}
+
+/** 1.200 gibi kısaltılmış gösterim — 1000+ değerler için "1.2K", altı ham sayı. */
+private fun formatStatNumber(value: Int): String = when {
+    value >= 1_000_000 -> String.format(Locale.US, "%.1fM", value / 1_000_000.0)
+    value >= 1_000 -> String.format(Locale.US, "%.1fK", value / 1_000.0)
+    else -> value.toString()
 }
 
 @Composable
