@@ -386,4 +386,7 @@
     <string name="profile_gender_female">女性</string>
     <string name="profile_gender_male">男性</string>
     <string name="profile_gender_unspecified">不愿透露</string>
+    <string name="home_streak_days">连续: %1$d 天</string>
+    <string name="home_streak_start">连续开始: %1$s</string>
+    <string name="home_welcome_summary">欢迎回来！您有 %1$d 条新通知。</string>
 </resources>
