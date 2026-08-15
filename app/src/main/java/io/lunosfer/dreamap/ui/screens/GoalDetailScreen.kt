@@ -20,7 +20,6 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material.icons.outlined.ModeComment
 import androidx.compose.material3.*
-import androidx.compose.ui.res.stringResource
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Alignment
@@ -111,9 +110,7 @@ fun GoalDetailScreen(
                         onUpdateStatus = { status, story, onComplete ->
                             viewModel.updateStatus(status, story, onComplete)
                         },
-                        onDeleteGoal = {
-                            viewModel.deleteGoal(onSuccess = onBack)
-                        },
+                        onDeleteGoal = { viewModel.deleteGoal(onSuccess = onBack) },
                         onGenerateCover = viewModel::generateCover,
                         onAddPixabayImage = viewModel::addPixabayImage,
                         onAddUrlImage = viewModel::addUrlImage,
@@ -125,7 +122,6 @@ fun GoalDetailScreen(
         }
     }
 }
-
 @Composable
 private fun GoalDetailContent(
     state: GoalDetailUiState.Success,
@@ -147,7 +143,6 @@ private fun GoalDetailContent(
 ) {
     val goal = state.goal
     val isOwner = currentUserId != null && currentUserId == goal.userId
-
     var showStatusDialog by remember { mutableStateOf(false) }
     var showDeleteDialog by remember { mutableStateOf(false) }
     var showCommentsSection by remember { mutableStateOf(true) }
@@ -199,7 +194,7 @@ private fun GoalDetailContent(
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = AetherViolet)
                 ) {
-                    Text("Ekle", color = Color.White)
+                    Text(stringResource(R.string.goal_detail_add), color = Color.White)
                 }
             },
             dismissButton = {
@@ -224,27 +219,24 @@ private fun GoalDetailContent(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Geri", tint = Color.White)
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, tint = Color.White)
             }
-
             Text(
                 text = stringResource(R.string.goal_detail_title),
                 color = AstralGold,
                 style = MaterialTheme.typography.titleMedium.copy(fontFamily = SerifFontFamily)
             )
-
             Row(verticalAlignment = Alignment.CenterVertically) {
                 IconButton(onClick = onToggleSave) {
                     Icon(
                         imageVector = if (state.hasSaved) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
-                        contentDescription = "Kaydet",
+                        contentDescription = null,
                         tint = AstralGold
                     )
                 }
-
                 if (isOwner) {
                     IconButton(onClick = { showDeleteDialog = true }) {
-                        Icon(Icons.Filled.Delete, contentDescription = "Sil", tint = Color(0xFFF87171))
+                        Icon(Icons.Filled.Delete, contentDescription = null, tint = Color(0xFFF87171))
                     }
                 }
             }
@@ -300,7 +292,7 @@ private fun GoalDetailContent(
                         if (!goal.coverImageUrl.isNullOrBlank()) {
                             AssistChip(
                                 onClick = { onRemoveImage(goal.coverImageUrl) },
-                                label = { Text("🗑️", fontSize = 10.sp, color = Color(0xFFF87171)) },
+                                label = { Text("\uD83D\uDDD1\uFE0F", fontSize = 10.sp, color = Color(0xFFF87171)) },
                                 colors = AssistChipDefaults.assistChipColors(containerColor = Void800)
                             )
                         }
@@ -342,7 +334,6 @@ private fun GoalDetailContent(
                                 )
                             }
                         }
-
                         Text(
                             text = goal.owner?.nameOrFallback ?: "@${goal.userId.take(8)}",
                             color = AstralGold,
@@ -359,16 +350,15 @@ private fun GoalDetailContent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     val statusText = when (goal.status) {
-                        "completed" -> "TAMAMLANDI 🎉"
-                        "abandoned" -> "BIRAKILDI"
-                        else -> "DEVAM EDİYOR"
+                        "completed" -> stringResource(R.string.goal_detail_status_completed)
+                        "abandoned" -> stringResource(R.string.goal_detail_status_abandoned)
+                        else -> stringResource(R.string.goal_detail_status_active)
                     }
                     val statusBg = when (goal.status) {
                         "completed" -> Color(0xFF10B981)
                         "abandoned" -> Color(0xFF6B7280)
                         else -> AetherViolet
                     }
-
                     Box(
                         modifier = Modifier
                             .clip(RoundedCornerShape(50))
@@ -383,12 +373,11 @@ private fun GoalDetailContent(
                             fontWeight = FontWeight.Bold
                         )
                     }
-
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
-                        Icon(Icons.Filled.Star, contentDescription = "Mana", tint = AstralGold, modifier = Modifier.size(16.dp))
+                        Icon(Icons.Filled.Star, contentDescription = null, tint = AstralGold, modifier = Modifier.size(16.dp))
                         Text(stringResource(R.string.goal_detail_mana_count, state.believersCount), color = AstralGold, fontSize = 12.sp, fontWeight = FontWeight.Bold)
                     }
                 }
@@ -412,7 +401,6 @@ private fun GoalDetailContent(
                             fontSize = 14.sp,
                             lineHeight = 20.sp
                         )
-
                         // Translate option
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -433,13 +421,14 @@ private fun GoalDetailContent(
                                 }
                             ) {
                                 Text(
-                                    text = if (isTranslatingDesc) "Çevriliyor..." else if (translatedDesc != null) "Orijinali Gör" else "🌐 Çevir",
+                                    text = if (isTranslatingDesc) stringResource(R.string.goal_detail_translating)
+                                        else if (translatedDesc != null) stringResource(R.string.goal_detail_see_original)
+                                        else stringResource(R.string.goal_detail_translate),
                                     color = AstralGold,
                                     fontSize = 11.sp
                                 )
                             }
                         }
-
                         if (translatedDesc != null) {
                             Box(
                                 modifier = Modifier
@@ -499,7 +488,10 @@ private fun GoalDetailContent(
                 val microGoals = goal.microGoals
                 if (!microGoals.isNullOrEmpty()) {
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text("Yol Haritası (${microGoals.count { it.isCompleted }}/${microGoals.size})", color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                    Text(
+                        stringResource(R.string.goal_detail_roadmap, microGoals.count { it.isCompleted }, microGoals.size),
+                        color = AstralGold, fontSize = 13.sp, fontWeight = FontWeight.Bold
+                    )
                     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                         microGoals.forEach { mg ->
                             Row(
@@ -598,9 +590,7 @@ private fun GoalDetailContent(
         UpdateGoalStatusDialog(
             onDismiss = { showStatusDialog = false },
             onConfirm = { status, story ->
-                onUpdateStatus(status, story) {
-                    showStatusDialog = false
-                }
+                onUpdateStatus(status, story) { showStatusDialog = false }
             }
         )
     }
@@ -610,8 +600,8 @@ private fun GoalDetailContent(
         AlertDialog(
             onDismissRequest = { showDeleteDialog = false },
             containerColor = Void900,
-            title = { Text("Vizyonu Sil", color = Color.White) },
-            text = { Text("Bu vizyonu ve ilişkili mikro hedefleri silmek istediğinizden emin misiniz?", color = Color.LightGray) },
+            title = { Text(stringResource(R.string.goal_detail_delete_title), color = Color.White) },
+            text = { Text(stringResource(R.string.goal_detail_delete_confirm), color = Color.LightGray) },
             confirmButton = {
                 TextButton(
                     onClick = {
@@ -641,7 +631,6 @@ private fun GoalCommentsView(
     onDeleteComment: (String) -> Unit
 ) {
     var commentText by remember { mutableStateOf("") }
-
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
@@ -660,7 +649,6 @@ private fun GoalCommentsView(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold
             )
-
             if (isLoading) {
                 CircularProgressIndicator(
                     color = AstralGold,
@@ -681,7 +669,6 @@ private fun GoalCommentsView(
                     )
                 }
             }
-
             // Input Row
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -701,7 +688,6 @@ private fun GoalCommentsView(
                         unfocusedTextColor = Color.White
                     )
                 )
-
                 IconButton(
                     onClick = {
                         if (commentText.isNotBlank()) {
@@ -720,7 +706,7 @@ private fun GoalCommentsView(
                     } else {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.Send,
-                            contentDescription = "Gönder",
+                            contentDescription = null,
                             tint = Void950,
                             modifier = Modifier.size(18.dp)
                         )
@@ -772,7 +758,6 @@ private fun GoalCommentRow(
                 )
             }
         }
-
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = comment.userProfile?.nameOrFallback ?: stringResource(R.string.goal_detail_default_user),
@@ -787,7 +772,6 @@ private fun GoalCommentRow(
                 fontSize = 12.sp
             )
         }
-
         if (currentUserId != null && currentUserId == comment.userId) {
             IconButton(
                 onClick = onDelete,
@@ -795,7 +779,7 @@ private fun GoalCommentRow(
             ) {
                 Icon(
                     imageVector = Icons.Filled.Close,
-                    contentDescription = "Sil",
+                    contentDescription = null,
                     tint = Color.Gray,
                     modifier = Modifier.size(14.dp)
                 )
@@ -822,7 +806,6 @@ private fun UpdateGoalStatusDialog(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Text(stringResource(R.string.goal_detail_select_outcome), color = Color.LightGray, fontSize = 13.sp)
-
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     FilterChip(
                         selected = selectedStatus == "completed",
@@ -843,13 +826,10 @@ private fun UpdateGoalStatusDialog(
                         )
                     )
                 }
-
                 OutlinedTextField(
                     value = storyText,
                     onValueChange = { if (it.length <= 2000) storyText = it },
-                    label = {
-                        Text(if (selectedStatus == "completed") "Zafer Hikayesi (Opsiyonel)" else "Vazgeçme Nedeni (Opsiyonel)")
-                    },
+                    label = { Text(if (selectedStatus == "completed") stringResource(R.string.goal_detail_victory_story) else stringResource(R.string.goal_detail_abandon_reason)) },
                     modifier = Modifier.fillMaxWidth(),
                     minLines = 3,
                     colors = OutlinedTextFieldDefaults.colors(
