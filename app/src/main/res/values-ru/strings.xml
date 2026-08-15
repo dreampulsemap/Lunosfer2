@@ -174,4 +174,11 @@
     <string name="empty_victory">Ещё нет отпразднованных побед</string>
     <string name="empty_phoenix">Стена Феникса молчит</string>
     <string name="empty_vision">Ещё нет активных видений</string>
+
+    <string name="profile_stat_engagement">Активность</string>
+    <string name="profile_stat_engagement_empty">Поделись сном, чтобы тебя заметили</string>
+    <string name="profile_stat_comments">Комментарии</string>
+    <string name="profile_stat_comments_empty">Комментариев пока нет</string>
+    <string name="profile_stat_friends">Друзья</string>
+    <string name="profile_stat_friends_empty">Найди своего первого друга</string>
 </resources>
