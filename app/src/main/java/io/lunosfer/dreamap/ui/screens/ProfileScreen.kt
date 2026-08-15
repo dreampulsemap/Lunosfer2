@@ -65,6 +65,7 @@ fun ProfileScreen(
     onLogout: () -> Unit,
     onAddFriendClick: () -> Unit = {},
     onDiaryJournalClick: () -> Unit = {},
+    onUpgradeClick: () -> Unit = {},
     viewModel: ProfileViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
@@ -154,7 +155,7 @@ fun ProfileScreen(
 
                             NotificationPermissionBanner()
                             AISummariesCard()
-                            PremiumStatusCard(status = s.premiumStatus)
+                            PremiumStatusCard(status = s.premiumStatus, onUpgradeClick = onUpgradeClick)
                             ReferralCard()
 
                             Button(
@@ -516,7 +517,7 @@ private fun formatStatNumber(value: Int): String = when {
 }
 
 @Composable
-private fun PremiumStatusCard(status: PremiumStatusResponse) {
+private fun PremiumStatusCard(status: PremiumStatusResponse, onUpgradeClick: () -> Unit = {}) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
@@ -528,6 +529,7 @@ private fun PremiumStatusCard(status: PremiumStatusResponse) {
             if (status.isPremium) AstralGold else Void800
         )
     ) {
+        Column {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -587,6 +589,18 @@ private fun PremiumStatusCard(status: PremiumStatusResponse) {
                             fontSize = 12.sp
                         )
                     }
+                }
+            }
+        }
+            if (!status.isPremium) {
+                Button(
+                    onClick = onUpgradeClick,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = AstralGold, contentColor = Color.Black)
+                ) {
+                    Text(stringResource(R.string.billing_upgrade_cta), fontWeight = FontWeight.Bold)
                 }
             }
         }

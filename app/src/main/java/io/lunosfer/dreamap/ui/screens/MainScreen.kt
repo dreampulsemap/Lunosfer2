@@ -30,6 +30,7 @@ import io.lunosfer.dreamap.ui.theme.*
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.status.SessionStatus
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(
     navController: NavHostController = rememberNavController(),
@@ -71,6 +72,19 @@ fun MainScreen(
         }
     }
 
+    // Billing bağlantısı ve aura bakiyesi: BillingRepository tekil (object)
+    // olduğu için burada doğrudan onun StateFlow'unu dinliyoruz, ayrı bir
+    // ViewModel'e gerek yok.
+    val auraBalance by io.lunosfer.dreamap.data.repository.BillingRepository.auraBalance.collectAsState()
+    var showBillingSheet by remember { mutableStateOf(false) }
+    var billingSheetTab by remember { mutableStateOf(BillingTab.AURA) }
+
+    LaunchedEffect(isLoggedIn) {
+        if (isLoggedIn) {
+            io.lunosfer.dreamap.data.repository.BillingRepository.connectAndLoadProducts()
+        }
+    }
+
     val fullScreenRoutes = setOf(
         Screen.DreamDetail.route,
         Screen.Thread.route,
@@ -86,10 +100,15 @@ fun MainScreen(
                 TopBar(
                     isLoggedIn = isLoggedIn,
                     unreadCount = unreadCount,
+                    auraBalance = auraBalance,
                     onLoginClick = { navController.navigate(Screen.Auth.route) },
                     onProfileClick = { navController.navigate(Screen.Profile.route) },
                     onNotificationsClick = { navController.navigate(Screen.Notifications.route) },
-                    onSpiritualToolsClick = { navController.navigate(Screen.SpiritualTools.route) }
+                    onSpiritualToolsClick = { navController.navigate(Screen.SpiritualTools.route) },
+                    onBuyAuraClick = {
+                        billingSheetTab = BillingTab.AURA
+                        showBillingSheet = true
+                    }
                 )
             }
         },
@@ -169,6 +188,10 @@ fun MainScreen(
                     },
                     onDiaryJournalClick = {
                         if (currentUserId.isNotBlank()) navController.navigate(Screen.DiaryJournal.routeFor(currentUserId))
+                    },
+                    onUpgradeClick = {
+                        billingSheetTab = BillingTab.PREMIUM
+                        showBillingSheet = true
                     }
                 )
             }
@@ -227,6 +250,14 @@ fun MainScreen(
             }
         }
     }
+
+    if (showBillingSheet) {
+        BillingSheet(
+            initialTab = billingSheetTab,
+            sheetState = rememberModalBottomSheetState(),
+            onDismiss = { showBillingSheet = false }
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -234,10 +265,12 @@ fun MainScreen(
 fun TopBar(
     isLoggedIn: Boolean,
     unreadCount: Int = 0,
+    auraBalance: Int = 0,
     onLoginClick: () -> Unit,
     onProfileClick: (() -> Unit)? = null,
     onNotificationsClick: (() -> Unit)? = null,
-    onSpiritualToolsClick: (() -> Unit)? = null
+    onSpiritualToolsClick: (() -> Unit)? = null,
+    onBuyAuraClick: (() -> Unit)? = null
 ) {
     var showAuraPopup by remember { mutableStateOf(false) }
 
@@ -287,13 +320,19 @@ fun TopBar(
                         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(horizontal = 8.dp)) {
                             Icon(Icons.Filled.Star, contentDescription = null, tint = AstralGold, modifier = Modifier.size(14.dp))
                             Spacer(Modifier.width(4.dp))
-                            Text("0", color = AstralGold, style = MaterialTheme.typography.labelMedium)
+                            Text("$auraBalance", color = AstralGold, style = MaterialTheme.typography.labelMedium)
                         }
                     }
                     if (showAuraPopup) {
                         DropdownMenu(expanded = showAuraPopup, onDismissRequest = { showAuraPopup = false }) {
-                            DropdownMenuItem(text = { Text(stringResource(R.string.main_menu_auras)) }, onClick = { showAuraPopup = false })
-                            DropdownMenuItem(text = { Text(stringResource(R.string.main_menu_buy_aura)) }, onClick = { showAuraPopup = false })
+                            DropdownMenuItem(text = { Text(stringResource(R.string.main_menu_auras, auraBalance)) }, onClick = { showAuraPopup = false })
+                            DropdownMenuItem(
+                                text = { Text(stringResource(R.string.main_menu_buy_aura)) },
+                                onClick = {
+                                    showAuraPopup = false
+                                    onBuyAuraClick?.invoke()
+                                }
+                            )
                         }
                     }
                 }
