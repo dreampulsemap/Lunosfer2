@@ -402,4 +402,10 @@
     <string name="profile_gender_male">Erkek</string>
     <string name="profile_gender_unspecified">Belirtmek İstemiyorum</string>
     <string name="auth_or_separator">— OR —</string>
+    <string name="goal_detail_status_completed">TAMAMLANDI 🎉</string>
+    <string name="goal_detail_status_abandoned">BIRAKILDI</string>
+    <string name="goal_detail_status_active">DEVAM EDİYOR</string>
+    <string name="goal_detail_translating">Çevriliyor...</string>
+    <string name="goal_detail_see_original">Orijinali Gör</string>
+    <string name="goal_detail_translate">🌐 Çevir</string>
 </resources>
