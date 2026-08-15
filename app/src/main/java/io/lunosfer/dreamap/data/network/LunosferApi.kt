@@ -222,6 +222,14 @@ interface LunosferApi {
     @GET("api/user/premium-status")
     suspend fun getPremiumStatus(): io.lunosfer.dreamap.data.model.PremiumStatusResponse
 
+    // --- Google Play Billing ---
+    // Satın alma tamamlandığında (acknowledge/consume'dan ÖNCE) çağrılır;
+    // bkz. BillingRepository.kt ve pages/api/billing/google-play-verify.js.
+    @POST("api/billing/google-play-verify")
+    suspend fun verifyGooglePlayPurchase(
+        @Body request: io.lunosfer.dreamap.data.model.VerifyGooglePlayPurchaseRequest
+    ): io.lunosfer.dreamap.data.model.VerifyGooglePlayPurchaseResponse
+
     @GET("api/profile-stats")
     suspend fun getProfileStats(): io.lunosfer.dreamap.data.model.ProfileStatsResponse
 
