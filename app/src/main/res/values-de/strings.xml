@@ -376,4 +376,8 @@
     <string name="goal_detail_victory_story">Erfolgsgeschichte (Optional)</string>
     <string name="goal_detail_abandon_reason">Grund der Aufgabe (Optional)</string>
 <string name="vision_status_abandoned">AUFGEGEBEN</string>
+    <string name="profile_date_soon">Bald</string>
+    <string name="profile_gender_female">Weiblich</string>
+    <string name="profile_gender_male">Männlich</string>
+    <string name="profile_gender_unspecified">Möchte ich nicht angeben</string>
 </resources>
