@@ -322,4 +322,23 @@
     <string name="dream_detail_bounty_desc">Entrez le montant d\'Aura que vous souhaitez ajouter à ce rêve (1-50) :</string>
     <string name="error_vision_not_found">Vision introuvable : %1$s</string>
     <string name="dream_detail_edit_tags_label">Ajouter des tags (utiliser une virgule)</string>
+    <string name="diary_journal_title">Journal Permanent</string>
+    <string name="diary_journal_back">Retour</string>
+    <string name="diary_journal_retry">Réessayer</string>
+    <string name="diary_journal_empty_title">Votre journal commence ici</string>
+    <string name="diary_journal_empty_body">Tout ce que vous ajoutez reste ici pour toujours — un vrai souvenir, pas une story qui disparaît au bout d'un jour.</string>
+    <string name="diary_journal_private_badge">Privé</string>
+    <string name="diary_journal_public_badge">Public</string>
+    <string name="diary_journal_goal_prefix">Objectif : %1$s</string>
+    <string name="diary_journal_unknown_date">Date Inconnue</string>
+    <string name="diary_journal_load_error">Impossible de charger les entrées du journal</string>
+    <string name="diary_journal_today">Aujourd'hui</string>
+    <string name="diary_journal_yesterday">Hier</string>
+    <string name="profile_tab_visions">Tableau de Vision</string>
+    <string name="profile_tab_dreams">Rêves</string>
+    <string name="profile_tab_journal">Journal</string>
+    <string name="profile_tab_saved">Enregistrés</string>
+    <string name="profile_empty_visions">Pas encore de visions.</string>
+    <string name="profile_empty_dreams">Pas encore de rêves.</string>
+    <string name="profile_empty_saved">Pas encore de visions enregistrées.</string>
 </resources>
