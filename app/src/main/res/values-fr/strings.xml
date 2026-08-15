@@ -369,6 +369,9 @@
     <string name="goal_detail_status_completed">🎉 Terminé</string>
     <string name="goal_detail_status_abandoned">Abandonné</string>
     <string name="goal_detail_status_active">Actif</string>
+    <string name="home_streak_days">Série : %1$d jours</string>
+    <string name="home_streak_start">Série commencée : %1$s</string>
+    <string name="home_welcome_summary">Bon retour ! Vous avez %1$d nouvelles notifications.</string>
     <string name="goal_detail_translating">Traduction en cours...</string>
     <string name="goal_detail_see_original">Voir l\'original</string>    <string name="goal_detail_translate">🌐 Traduire</string>
     <string name="goal_detail_abandoned_chip">Abandonné</string>
