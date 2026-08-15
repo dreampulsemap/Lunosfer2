@@ -407,4 +407,8 @@
     <string name="goal_detail_status_active">Active</string>
     <string name="goal_detail_translating">Translating...</string>
     <string name="goal_detail_see_original">See original</string>
-    <string name="goal_detail_translate">🌐 Translate</string>sources>
+    <string name="goal_detail_translate">🌐 Translate</string>
+    <string name="home_streak_days">%1$d gün seri</string>
+    <string name="home_streak_start">Serini bugün başlat</string>
+    <string name="home_welcome_summary">Bugün %1$d rüya, %2$d aktif vizyon seni bekliyor</string>
+</resources>
