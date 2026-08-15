@@ -323,4 +323,23 @@
     <string name="dream_detail_bounty_desc">Introduce la cantidad de Aura que deseas añadir a este sueño (1-50):</string>
     <string name="error_vision_not_found">Visión no encontrada: %1$s</string>
     <string name="dream_detail_edit_tags_label">Añadir etiquetas (usa comas)</string>
+    <string name="diary_journal_title">Diario Permanente</string>
+    <string name="diary_journal_back">Atrás</string>
+    <string name="diary_journal_retry">Reintentar</string>
+    <string name="diary_journal_empty_title">Tu diario empieza aquí</string>
+    <string name="diary_journal_empty_body">Todo lo que añades se queda aquí para siempre — un registro real, no una historia que desaparece en un día.</string>
+    <string name="diary_journal_private_badge">Privado</string>
+    <string name="diary_journal_public_badge">Público</string>
+    <string name="diary_journal_goal_prefix">Meta: %1$s</string>
+    <string name="diary_journal_unknown_date">Fecha Desconocida</string>
+    <string name="diary_journal_load_error">No se pudieron cargar las entradas del diario</string>
+    <string name="diary_journal_today">Hoy</string>
+    <string name="diary_journal_yesterday">Ayer</string>
+    <string name="profile_tab_visions">Tablero de Visión</string>
+    <string name="profile_tab_dreams">Sueños</string>
+    <string name="profile_tab_journal">Diario</string>
+    <string name="profile_tab_saved">Guardados</string>
+    <string name="profile_empty_visions">Aún no hay visiones.</string>
+    <string name="profile_empty_dreams">Aún no hay sueños.</string>
+    <string name="profile_empty_saved">Aún no hay visiones guardadas.</string>
 </resources>
