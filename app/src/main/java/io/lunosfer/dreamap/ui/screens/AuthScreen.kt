@@ -215,7 +215,7 @@ fun AuthScreen(onLoginSuccess: () -> Unit) {
                 Spacer(Modifier.height(16.dp))
                 
                 Text(
-                    text = "— OR —",
+                                    text = stringResource(R.string.auth_or_separator),
                     color = Color.Gray,
                     style = MaterialTheme.typography.bodySmall,
                     modifier = Modifier.padding(vertical = 8.dp)
