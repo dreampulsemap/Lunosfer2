@@ -221,6 +221,12 @@
     <string name="notifications_empty">ليس لديك أي إشعارات حتى الآن.</string>
     <string name="goal_detail_title">تفاصيل الرؤية</string>
     <string name="profile_private_badge">حساب خاص</string>
+    <string name="profile_stat_engagement">التفاعل</string>
+    <string name="profile_stat_engagement_empty">شارك حلمًا لتلفت الأنظار</string>
+    <string name="profile_stat_comments">التعليقات</string>
+    <string name="profile_stat_comments_empty">لا توجد تعليقات بعد</string>
+    <string name="profile_stat_friends">الأصدقاء</string>
+    <string name="profile_stat_friends_empty">ابحث عن صديقك الأول</string>
     <string name="home_feed_archetypes_label">الأنماط الأصلية</string>
     <string name="home_feed_vision_badge">رؤية</string>
     <string name="error_diary_feed_load">فشل في تحميل خلاصة اليوميات</string>
