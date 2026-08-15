@@ -175,4 +175,11 @@
     <string name="vision_no_public_visions_title">暂无公开愿景</string>
     <string name="empty_victory">暂无值得庆祝的胜利</string>
     <string name="vision_compass_archetype_label">原型：%1$s</string>
+
+    <string name="profile_stat_engagement">互动</string>
+    <string name="profile_stat_engagement_empty">分享一个梦想，让更多人注意到你</string>
+    <string name="profile_stat_comments">评论</string>
+    <string name="profile_stat_comments_empty">暂无评论</string>
+    <string name="profile_stat_friends">好友</string>
+    <string name="profile_stat_friends_empty">找到你的第一个好友</string>
 </resources>
