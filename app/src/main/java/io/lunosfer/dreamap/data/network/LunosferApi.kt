@@ -222,6 +222,9 @@ interface LunosferApi {
     @GET("api/user/premium-status")
     suspend fun getPremiumStatus(): io.lunosfer.dreamap.data.model.PremiumStatusResponse
 
+    @GET("api/profile-stats")
+    suspend fun getProfileStats(): io.lunosfer.dreamap.data.model.ProfileStatsResponse
+
     // --- Diary / Stories ---
 
     @GET("api/diary/feed")
