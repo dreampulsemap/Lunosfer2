@@ -384,4 +384,7 @@
     <string name="profile_gender_male">男性</string>
     <string name="profile_gender_unspecified">回答しない</string>
     <string name="auth_or_separator">— または —</string>
+    <string name="home_streak_days">連続: %1$d日目</string>
+    <string name="home_streak_start">連続開始: %1$s</string>
+    <string name="home_welcome_summary">おかえりなさい！新しい通知が%1$d件あります。</string>
 </resources>
