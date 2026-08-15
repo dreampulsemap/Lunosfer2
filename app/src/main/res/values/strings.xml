@@ -224,6 +224,12 @@
     <string name="profile_logout_btn">Log Out</string>
     <string name="profile_private_badge">Private Account</string>
     <string name="profile_edit_action">Edit</string>
+    <string name="profile_stat_engagement">Engagement</string>
+    <string name="profile_stat_engagement_empty">Share a dream to get noticed</string>
+    <string name="profile_stat_comments">Comments</string>
+    <string name="profile_stat_comments_empty">No comments yet</string>
+    <string name="profile_stat_friends">Friends</string>
+    <string name="profile_stat_friends_empty">Find your first friend</string>
     <string name="profile_edit_username_label">Username (3-32 characters)</string>
     <string name="profile_edit_display_name_label">Display Name (max 60)</string>
     <string name="profile_edit_avatar_url_label">Profile Picture URL</string>
