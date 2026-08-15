@@ -375,6 +375,9 @@
     <string name="goal_detail_translating">अनुवाद हो रहा है...</string>
     <string name="goal_detail_see_original">मूल देखें</string>
     <string name="goal_detail_translate">🌐 अनुवाद करें</string>
+    <string name="home_streak_days">लगातार: %1$d दिन</string>
+    <string name="home_streak_start">लगातार शुरू: %1$s</string>
+    <string name="home_welcome_summary">वापस स्वागत है! आपके पास %1$d नए सूचनाएं हैं।</string>
     <string name="goal_detail_abandoned_chip">छोड़ दिया गया</string>
     <string name="goal_detail_update_btn">अपडेट करें</string>
     <string name="goal_detail_default_user">उपयोगकर्ता</string>
