@@ -372,4 +372,9 @@
     <string name="goal_detail_victory_story">勝利の物語（任意）</string>
     <string name="goal_detail_abandon_reason">断念の理由（任意）</string>
 <string name="profile_empty_saved">保存されたビジョンはまだありません。</string>
+    <string name="vision_status_abandoned">断念</string>
+    <string name="profile_date_soon">まもなく</string>
+    <string name="profile_gender_female">女性</string>
+    <string name="profile_gender_male">男性</string>
+    <string name="profile_gender_unspecified">回答しない</string>
 </resources>
