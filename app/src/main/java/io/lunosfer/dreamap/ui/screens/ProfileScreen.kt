@@ -575,8 +575,7 @@ private fun PremiumStatusCard(status: PremiumStatusResponse, onUpgradeClick: () 
                         fontWeight = FontWeight.Bold
                     )
                     if (!status.canPickVideo) {
-                        val formattedDate = formatNextAvailableDate(status.nextAvailableAt)
-                        Text(
+                        val formattedDate = formatNextAvailableDate(status.nextAvailableAt, stringResource(R.string.profile_date_soon))                        Text(
                             text = stringResource(R.string.profile_free_video_wait, formattedDate),
                             color = Color(0xFFF87171),
                             fontSize = 12.sp,
@@ -636,10 +635,10 @@ private fun EditProfileDialog(
         "hi" to "हिन्दी"
     )
 
-    val genders = listOf(
-        "female" to "Kadın",
-        "male" to "Erkek",
-        "unspecified" to "Belirtmek İstemiyorum"
+        val genders = listOf(
+        "female" to stringResource(R.string.profile_gender_female),
+        "male" to stringResource(R.string.profile_gender_male),
+        "unspecified" to stringResource(R.string.profile_gender_unspecified)
     )
 
     Dialog(onDismissRequest = onDismiss) {
@@ -791,8 +790,8 @@ private fun EditProfileDialog(
     }
 }
 
-private fun formatNextAvailableDate(isoString: String?): String {
-    if (isoString.isNullOrBlank()) return "yakında"
+private fun formatNextAvailableDate(isoString: String?, soonLabel: String): String {
+    if (isoString.isNullOrBlank()) return soonLabel
     return try {
         val inputFormat = java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US).apply {
             timeZone = java.util.TimeZone.getTimeZone("UTC")
