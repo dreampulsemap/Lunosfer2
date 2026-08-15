@@ -93,7 +93,7 @@ fun GoalDetailScreen(
                             onClick = { viewModel.loadGoal() },
                             colors = ButtonDefaults.outlinedButtonColors(contentColor = AstralGold)
                         ) {
-                            Text("Tekrar Dene")
+                            Text(stringResource(R.string.goal_detail_retry))
                         }
                     }
                 }
@@ -173,12 +173,12 @@ private fun GoalDetailContent(
         AlertDialog(
             onDismissRequest = { showUrlDialog = false },
             containerColor = Void900,
-            title = { Text("URL ile Görsel Ekle", color = AstralGold, fontSize = 16.sp) },
+            title = { Text(stringResource(R.string.goal_detail_add_image_url), color = AstralGold, fontSize = 16.sp) },
             text = {
                 OutlinedTextField(
                     value = urlInputText,
                     onValueChange = { urlInputText = it },
-                    placeholder = { Text("https://example.com/image.jpg", color = Color.Gray, fontSize = 12.sp) },
+                    placeholder = { Text(stringResource(R.string.goal_detail_url_placeholder), color = Color.Gray, fontSize = 12.sp) },
                     singleLine = true,
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = AstralGold,
@@ -204,7 +204,7 @@ private fun GoalDetailContent(
             },
             dismissButton = {
                 TextButton(onClick = { showUrlDialog = false }) {
-                    Text("İptal", color = Color.Gray)
+                    Text(stringResource(R.string.goal_detail_cancel), color = Color.Gray)
                 }
             }
         )
@@ -284,17 +284,17 @@ private fun GoalDetailContent(
                     ) {
                         AssistChip(
                             onClick = onGenerateCover,
-                            label = { Text("🤖 AI Kapak", fontSize = 10.sp, color = AstralGold) },
+                            label = { Text(stringResource(R.string.goal_detail_ai_cover), fontSize = 10.sp, color = AstralGold) },
                             colors = AssistChipDefaults.assistChipColors(containerColor = Void800)
                         )
                         AssistChip(
                             onClick = { showPixabayDialog = true },
-                            label = { Text("🖼️ Pixabay", fontSize = 10.sp, color = Color.White) },
+                            label = { Text(stringResource(R.string.goal_detail_pixabay), fontSize = 10.sp, color = Color.White) },
                             colors = AssistChipDefaults.assistChipColors(containerColor = Void800)
                         )
                         AssistChip(
                             onClick = { showUrlDialog = true },
-                            label = { Text("🔗 URL", fontSize = 10.sp, color = Color.White) },
+                            label = { Text(stringResource(R.string.goal_detail_url_label), fontSize = 10.sp, color = Color.White) },
                             colors = AssistChipDefaults.assistChipColors(containerColor = Void800)
                         )
                         if (!goal.coverImageUrl.isNullOrBlank()) {
@@ -389,7 +389,7 @@ private fun GoalDetailContent(
                         horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
                         Icon(Icons.Filled.Star, contentDescription = "Mana", tint = AstralGold, modifier = Modifier.size(16.dp))
-                        Text("${state.believersCount} Mana", color = AstralGold, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        Text(stringResource(R.string.goal_detail_mana_count, state.believersCount), color = AstralGold, fontSize = 12.sp, fontWeight = FontWeight.Bold)
                     }
                 }
 
@@ -481,8 +481,8 @@ private fun GoalDetailContent(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Text("İlerleme", color = Color.Gray, fontSize = 11.sp)
-                        Text("%${goal.completionPercentage ?: 0}", color = AstralGold, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        Text(stringResource(R.string.goal_detail_progress), color = Color.Gray, fontSize = 11.sp)
+                        Text(stringResource(R.string.goal_detail_percentage, goal.completionPercentage ?: 0), color = AstralGold, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                     }
                     LinearProgressIndicator(
                         progress = { progress.coerceIn(0f, 1f) },
@@ -539,7 +539,7 @@ private fun GoalDetailContent(
                                     .clip(CircleShape)
                             )
                         }
-                        Text("Vizyon Sahibi: ${owner.nameOrFallback}", color = Color.Gray, fontSize = 12.sp)
+                        Text(stringResource(R.string.goal_detail_owner, owner.nameOrFallback), color = Color.Gray, fontSize = 12.sp)
                     }
                 }
             }
@@ -556,7 +556,7 @@ private fun GoalDetailContent(
                     modifier = Modifier.weight(1f),
                     colors = ButtonDefaults.buttonColors(containerColor = AetherViolet)
                 ) {
-                    Text("Hedef Durumunu Güncelle", fontSize = 13.sp, color = Color.White)
+                    Text(stringResource(R.string.goal_detail_update_status_btn), fontSize = 13.sp, color = Color.White)
                 }
             } else if (!isOwner && goal.status == "active") {
                 if (!state.hasReacted) {
@@ -567,7 +567,7 @@ private fun GoalDetailContent(
                     ) {
                         Icon(Icons.Filled.Star, contentDescription = null, tint = Void950, modifier = Modifier.size(16.dp))
                         Spacer(Modifier.width(6.dp))
-                        Text("Mana Ver (+1)", color = Void950, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                        Text(stringResource(R.string.goal_detail_give_mana), color = Void950, fontWeight = FontWeight.Bold, fontSize = 13.sp)
                     }
                 } else {
                     OutlinedButton(
@@ -576,7 +576,7 @@ private fun GoalDetailContent(
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = AstralGold),
                         border = BorderStroke(1.dp, AstralGold)
                     ) {
-                        Text("Mana Reaksiyonunu Kaldır", fontSize = 12.sp)
+                        Text(stringResource(R.string.goal_detail_remove_mana), fontSize = 12.sp)
                     }
                 }
             }
@@ -619,12 +619,12 @@ private fun GoalDetailContent(
                         onDeleteGoal()
                     }
                 ) {
-                    Text("Sil", color = Color(0xFFF87171))
+                    Text(stringResource(R.string.goal_detail_delete_btn), color = Color(0xFFF87171))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showDeleteDialog = false }) {
-                    Text("İptal", color = Color.Gray)
+                    Text(stringResource(R.string.goal_detail_cancel), color = Color.Gray)
                 }
             }
         )
@@ -691,7 +691,7 @@ private fun GoalCommentsView(
                 OutlinedTextField(
                     value = commentText,
                     onValueChange = { if (it.length <= 1000) commentText = it },
-                    placeholder = { Text("Yorum yazın...", color = Color.Gray, fontSize = 12.sp) },
+                    placeholder = { Text(stringResource(R.string.goal_detail_comment_placeholder), color = Color.Gray, fontSize = 12.sp) },
                     modifier = Modifier.weight(1f),
                     singleLine = true,
                     colors = OutlinedTextFieldDefaults.colors(
@@ -775,7 +775,7 @@ private fun GoalCommentRow(
 
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = comment.userProfile?.nameOrFallback ?: "Kullanıcı",
+                text = comment.userProfile?.nameOrFallback ?: stringResource(R.string.goal_detail_default_user),
                 color = AstralGold,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold
@@ -815,19 +815,19 @@ private fun UpdateGoalStatusDialog(
     AlertDialog(
         onDismissRequest = onDismiss,
         containerColor = Void900,
-        title = { Text("Vizyon Durumunu Güncelle", color = Color.White, fontWeight = FontWeight.Bold) },
+        title = { Text(stringResource(R.string.goal_detail_update_status_title), color = Color.White, fontWeight = FontWeight.Bold) },
         text = {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Text("Vizyon sonucunu seçin:", color = Color.LightGray, fontSize = 13.sp)
+                Text(stringResource(R.string.goal_detail_select_outcome), color = Color.LightGray, fontSize = 13.sp)
 
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     FilterChip(
                         selected = selectedStatus == "completed",
                         onClick = { selectedStatus = "completed" },
-                        label = { Text("🎉 Tamamlandı", fontSize = 12.sp) },
+                        label = { Text(stringResource(R.string.goal_detail_completed_chip), fontSize = 12.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = Color(0xFF10B981),
                             selectedLabelColor = Color.White
@@ -836,7 +836,7 @@ private fun UpdateGoalStatusDialog(
                     FilterChip(
                         selected = selectedStatus == "abandoned",
                         onClick = { selectedStatus = "abandoned" },
-                        label = { Text("Vazgeçtim", fontSize = 12.sp) },
+                        label = { Text(stringResource(R.string.goal_detail_abandoned_chip), fontSize = 12.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = Color(0xFF6B7280),
                             selectedLabelColor = Color.White
@@ -868,12 +868,12 @@ private fun UpdateGoalStatusDialog(
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = AstralGold)
             ) {
-                Text("Güncelle", color = Void950, fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.goal_detail_update_btn), color = Void950, fontWeight = FontWeight.Bold)
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("İptal", color = Color.Gray)
+                Text(stringResource(R.string.goal_detail_cancel), color = Color.Gray)
             }
         }
     )
