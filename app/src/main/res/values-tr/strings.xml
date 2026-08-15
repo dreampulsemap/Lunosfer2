@@ -393,6 +393,12 @@
     <string name="goal_detail_update_status_title">Vizyon Durumunu Güncelle</string>
     <string name="goal_detail_select_outcome">Vizyon sonucunu seçin:</string>
     <string name="goal_detail_completed_chip">🎉 Tamamlandı</string>
+    <string name="goal_detail_status_completed">🎉 Tamamlandı</string>
+    <string name="goal_detail_status_abandoned">Vazgeçildi</string>
+    <string name="goal_detail_status_active">Aktif</string>
+    <string name="goal_detail_translating">Çevriliyor...</string>
+    <string name="goal_detail_see_original">Orijinali gör</string>
+    <string name="goal_detail_translate">🌐 Çevir</string>
     <string name="goal_detail_abandoned_chip">Vazgeçtim</string>
     <string name="goal_detail_update_btn">Güncelle</string>
     <string name="goal_detail_default_user">Kullanıcı</string>
