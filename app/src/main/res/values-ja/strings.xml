@@ -322,4 +322,23 @@
     <string name="dream_detail_bounty_desc">この夢に追加したいオーラの量を入力してください (1〜50):</string>
     <string name="error_vision_not_found">ビジョンが見つかりません: %1$s</string>
     <string name="dream_detail_edit_tags_label">タグを追加 (カンマ区切り)</string>
+    <string name="diary_journal_title">永久日記</string>
+    <string name="diary_journal_back">戻る</string>
+    <string name="diary_journal_retry">再試行</string>
+    <string name="diary_journal_empty_title">あなたの日記はここから始まります</string>
+    <string name="diary_journal_empty_body">追加したものはすべてここに永久に残ります — 1日で消えるストーリーではなく、本当の記録です。</string>
+    <string name="diary_journal_private_badge">非公開</string>
+    <string name="diary_journal_public_badge">公開</string>
+    <string name="diary_journal_goal_prefix">目標：%1$s</string>
+    <string name="diary_journal_unknown_date">不明な日付</string>
+    <string name="diary_journal_load_error">日記のエントリーを読み込めませんでした</string>
+    <string name="diary_journal_today">今日</string>
+    <string name="diary_journal_yesterday">昨日</string>
+    <string name="profile_tab_visions">ビジョンボード</string>
+    <string name="profile_tab_dreams">夢</string>
+    <string name="profile_tab_journal">日記</string>
+    <string name="profile_tab_saved">保存済み</string>
+    <string name="profile_empty_visions">まだビジョンがありません。</string>
+    <string name="profile_empty_dreams">まだ夢がありません。</string>
+    <string name="profile_empty_saved">保存されたビジョンはまだありません。</string>
 </resources>
