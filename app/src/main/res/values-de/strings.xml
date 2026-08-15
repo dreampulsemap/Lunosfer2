@@ -176,4 +176,11 @@
     <string name="empty_victory">Noch keine gefeierten Siege</string>
     <string name="empty_phoenix">Die Phönix-Mauer schweigt</string>
     <string name="empty_vision">Noch keine aktiven Visionen</string>
+
+    <string name="profile_stat_engagement">Engagement</string>
+    <string name="profile_stat_engagement_empty">Teile einen Traum, um aufzufallen</string>
+    <string name="profile_stat_comments">Kommentare</string>
+    <string name="profile_stat_comments_empty">Noch keine Kommentare</string>
+    <string name="profile_stat_friends">Freunde</string>
+    <string name="profile_stat_friends_empty">Finde deinen ersten Freund</string>
 </resources>
