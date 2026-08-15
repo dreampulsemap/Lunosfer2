@@ -370,6 +370,12 @@
     <string name="goal_detail_update_status_title">更新愿景状态</string>
     <string name="goal_detail_select_outcome">选择愿景结果：</string>
     <string name="goal_detail_completed_chip">🎉 已完成</string>
+    <string name="goal_detail_status_completed">🎉 已完成</string>
+    <string name="goal_detail_status_abandoned">已放弃</string>
+    <string name="goal_detail_status_active">进行中</string>
+    <string name="goal_detail_translating">翻译中...</string>
+    <string name="goal_detail_see_original">查看原文</string>
+    <string name="goal_detail_translate">🌐 翻译</string>
     <string name="goal_detail_abandoned_chip">已放弃</string>
     <string name="goal_detail_update_btn">更新</string>
     <string name="goal_detail_default_user">用户</string>
