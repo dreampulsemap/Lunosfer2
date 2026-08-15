@@ -243,6 +243,12 @@
     <string name="error_psyche_map">サイキマップの読み込みに失敗しました</string>
     <string name="vision_start_btn">ビジョンを開始</string>
     <string name="profile_edit_action">編集</string>
+    <string name="profile_stat_engagement">エンゲージメント</string>
+    <string name="profile_stat_engagement_empty">夢を共有して注目を集めよう</string>
+    <string name="profile_stat_comments">コメント</string>
+    <string name="profile_stat_comments_empty">まだコメントはありません</string>
+    <string name="profile_stat_friends">友達</string>
+    <string name="profile_stat_friends_empty">最初の友達を見つけよう</string>
     <string name="msg_dream_bounty_added">%1$d オーラのバウンティを追加しました！（残りオーラ：%2$s）</string>
     <string name="create_vision_cover_pixabay_btn">🖼️ Pixabayメディアギャラリーから選択</string>
     <string name="home_feed_sentiment_label">感情：%1$s</string>
