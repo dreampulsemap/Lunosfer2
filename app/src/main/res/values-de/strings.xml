@@ -387,5 +387,8 @@
     <string name="profile_gender_male">Männlich</string>
     <string name="profile_gender_unspecified">Möchte ich nicht angeben</string>
     <string name="auth_or_separator">— ODER —</string>
+    <string name="home_streak_days">Serie: %1$d Tage</string>
+    <string name="home_streak_start">Serie gestartet: %1$s</string>
+    <string name="home_welcome_summary">Willkommen zurück! Du hast %1$d neue Benachrichtigungen.</string>
 </resources>
 
