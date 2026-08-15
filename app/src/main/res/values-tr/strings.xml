@@ -337,4 +337,23 @@
     <string name="diary_ring_self">Sen</string>
     <string name="vision_status_completed">TAMAMLANDI</string>
     <string name="vision_status_abandoned">BIRAKILDI</string>
+    <string name="diary_journal_title">Kalıcı Günce</string>
+    <string name="diary_journal_back">Geri</string>
+    <string name="diary_journal_retry">Tekrar Dene</string>
+    <string name="diary_journal_empty_title">Günceniz burada başlıyor</string>
+    <string name="diary_journal_empty_body">Eklediğin her şey kalıcı olarak burada kalır — bir günde kaybolan bir hikaye değil, gerçek bir kayıt.</string>
+    <string name="diary_journal_private_badge">Gizli</string>
+    <string name="diary_journal_public_badge">Herkese Açık</string>
+    <string name="diary_journal_goal_prefix">Hedef: %1$s</string>
+    <string name="diary_journal_unknown_date">Bilinmeyen Tarih</string>
+    <string name="diary_journal_load_error">Günce kayıtları yüklenemedi</string>
+    <string name="diary_journal_today">Bugün</string>
+    <string name="diary_journal_yesterday">Dün</string>
+    <string name="profile_tab_visions">Vizyon Panosu</string>
+    <string name="profile_tab_dreams">Rüyalar</string>
+    <string name="profile_tab_journal">Günce</string>
+    <string name="profile_tab_saved">Kaydedilenler</string>
+    <string name="profile_empty_visions">Henüz vizyonunuz yok.</string>
+    <string name="profile_empty_dreams">Henüz rüyanız yok.</string>
+    <string name="profile_empty_saved">Henüz kaydedilmiş vizyonunuz yok.</string>
 </resources>
