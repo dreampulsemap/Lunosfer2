@@ -375,4 +375,9 @@
     <string name="goal_detail_default_user">用户</string>
     <string name="goal_detail_victory_story">胜利故事（可选）</string>
     <string name="goal_detail_abandon_reason">放弃原因（可选）</string>
+    <string name="vision_status_abandoned">已放弃</string>
+    <string name="profile_date_soon">即将推出</string>
+    <string name="profile_gender_female">女性</string>
+    <string name="profile_gender_male">男性</string>
+    <string name="profile_gender_unspecified">不愿透露</string>
 </resources>
