@@ -403,6 +403,9 @@
     <string name="goal_detail_update_btn">Güncelle</string>
     <string name="goal_detail_default_user">Kullanıcı</string>
     <string name="goal_detail_victory_story">Zafer Hikayesi (Opsiyonel)</string>
+    <string name="home_streak_days">Seri: %1$d gün</string>
+    <string name="home_streak_start">Seri başladı: %1$s</string>
+    <string name="home_welcome_summary">Tekrar hoş geldiniz! %1$d yeni bildiriminiz var.</string>
     <string name="goal_detail_abandon_reason">Vazgeçme Nedeni (Opsiyonel)</string>
     <string name="profile_date_soon">Yakında</string>
     <string name="profile_gender_female">Kadın</string>
