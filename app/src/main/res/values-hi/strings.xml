@@ -379,4 +379,5 @@
     <string name="profile_gender_female">महिला</string>
     <string name="profile_gender_male">पुरुष</string>
     <string name="profile_gender_unspecified">मैं बताना नहीं चाहता/चाहती</string>
+    <string name="auth_or_separator">— या —</string>
 </resources>
