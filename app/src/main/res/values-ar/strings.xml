@@ -372,3 +372,7 @@
     <string name="goal_detail_default_user">مستخدم</string>
     <string name="goal_detail_victory_story">قصة الانتصار (اختياري)</string>
     <string name="goal_detail_abandon_reason">سبب التخلي (اختياري)</string>
+    <string name="profile_date_soon">قريباً</string>
+    <string name="profile_gender_female">أنثى</string>
+    <string name="profile_gender_male">ذكر</string>
+    <string name="profile_gender_unspecified">أفضل عدم التحديد</string>
