@@ -181,6 +181,12 @@
     <string name="profile_edit_username_label">यूज़रनेम (3-32 अक्षर)</string>
     <string name="main_menu_settings">सेटिंग्स</string>
     <string name="profile_edit_action">संपादित करें</string>
+    <string name="profile_stat_engagement">एंगेजमेंट</string>
+    <string name="profile_stat_engagement_empty">ध्यान आकर्षित करने के लिए एक सपना साझा करें</string>
+    <string name="profile_stat_comments">टिप्पणियाँ</string>
+    <string name="profile_stat_comments_empty">अभी तक कोई टिप्पणी नहीं</string>
+    <string name="profile_stat_friends">दोस्त</string>
+    <string name="profile_stat_friends_empty">अपना पहला दोस्त खोजें</string>
     <string name="dream_detail_deep_analysis_title">गहन विश्लेषण</string>
     <string name="dream_detail_bounty_desc">इस सपने में जितनी ऑरा आप जोड़ना चाहते हैं उसकी मात्रा दर्ज करें (1-50):</string>
     <string name="public_profile_dreams_tab">सपने (%1$d)</string>
