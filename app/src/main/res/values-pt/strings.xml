@@ -244,6 +244,12 @@
     <string name="error_psyche_map">Falha ao carregar o Mapa da Psique</string>
     <string name="vision_start_btn">Iniciar Visão</string>
     <string name="profile_edit_action">Editar</string>
+    <string name="profile_stat_engagement">Engajamento</string>
+    <string name="profile_stat_engagement_empty">Compartilhe um sonho para se destacar</string>
+    <string name="profile_stat_comments">Comentários</string>
+    <string name="profile_stat_comments_empty">Ainda sem comentários</string>
+    <string name="profile_stat_friends">Amigos</string>
+    <string name="profile_stat_friends_empty">Encontre seu primeiro amigo</string>
     <string name="msg_dream_bounty_added">Recompensa de %1$d Aura adicionada! (Aura restante: %2$s)</string>
     <string name="create_vision_cover_pixabay_btn">🖼️ Selecionar da Galeria de Mídia do Pixabay</string>
     <string name="home_feed_sentiment_label">Emoção: %1$s</string>
