@@ -373,4 +373,9 @@
     <string name="goal_detail_default_user">Usuario</string>
     <string name="goal_detail_victory_story">Historia de Victoria (Opcional)</string>
     <string name="goal_detail_abandon_reason">Motivo del Abandono (Opcional)</string>
+    <string name="vision_status_abandoned">ABANDONADA</string>
+    <string name="profile_date_soon">Pronto</string>
+    <string name="profile_gender_female">Femenino</string>
+    <string name="profile_gender_male">Masculino</string>
+    <string name="profile_gender_unspecified">Prefiero no decir</string>
 </resources>
