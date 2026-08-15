@@ -377,4 +377,5 @@
     <string name="profile_gender_female">Féminin</string>
     <string name="profile_gender_male">Masculin</string>
     <string name="profile_gender_unspecified">Je préfère ne pas préciser</string>
+    <string name="auth_or_separator">— OU —</string>
 </resources>
