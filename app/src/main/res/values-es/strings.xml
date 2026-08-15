@@ -374,6 +374,9 @@
     <string name="goal_detail_translating">Traduciendo...</string>
     <string name="goal_detail_see_original">Ver original</string>
     <string name="goal_detail_translate">🌐 Traducir</string>
+    <string name="home_streak_days">Racha: %1$d días</string>
+    <string name="home_streak_start">Racha iniciada: %1$s</string>
+    <string name="home_welcome_summary">¡Bienvenido de nuevo! Tienes %1$d notificaciones nuevas.</string>
     <string name="goal_detail_abandoned_chip">Abandonado</string>
     <string name="goal_detail_update_btn">Actualizar</string>
     <string name="goal_detail_default_user">Usuario</string>
