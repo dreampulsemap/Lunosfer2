@@ -366,6 +366,12 @@
     <string name="goal_detail_update_status_title">ビジョンステータスを更新</string>
     <string name="goal_detail_select_outcome">ビジョンの結果を選択:</string>
     <string name="goal_detail_completed_chip">🎉 完了</string>
+    <string name="goal_detail_status_completed">🎉 完了</string>
+    <string name="goal_detail_status_abandoned">断念</string>
+    <string name="goal_detail_status_active">進行中</string>
+    <string name="goal_detail_translating">翻訳中...</string>
+    <string name="goal_detail_see_original">原文を見る</string>
+    <string name="goal_detail_translate">🌐 翻訳する</string>
     <string name="goal_detail_abandoned_chip">断念</string>
     <string name="goal_detail_update_btn">更新</string>
     <string name="goal_detail_default_user">ユーザー</string>
