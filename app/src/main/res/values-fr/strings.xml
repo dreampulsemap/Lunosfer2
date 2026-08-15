@@ -243,6 +243,12 @@
     <string name="error_psyche_map">Échec du chargement de la carte psychique</string>
     <string name="vision_start_btn">Commencer la vision</string>
     <string name="profile_edit_action">Modifier</string>
+    <string name="profile_stat_engagement">Interactions</string>
+    <string name="profile_stat_engagement_empty">Partage un rêve pour te faire remarquer</string>
+    <string name="profile_stat_comments">Commentaires</string>
+    <string name="profile_stat_comments_empty">Aucun commentaire pour l'instant</string>
+    <string name="profile_stat_friends">Amis</string>
+    <string name="profile_stat_friends_empty">Trouve ton premier ami</string>
     <string name="msg_dream_bounty_added">Prime de %1$d Aura ajoutée ! (Aura restante : %2$s)</string>
     <string name="create_vision_cover_pixabay_btn">🖼️ Sélectionner dans la galerie Pixabay</string>
     <string name="home_feed_sentiment_label">Émotion : %1$s</string>
