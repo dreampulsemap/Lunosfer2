@@ -247,8 +247,8 @@ private fun PendingRequestRow(
             OutlinedButton(
                 onClick = onReject,
                 modifier = Modifier.height(34.dp),
-                colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFFF87171)),
-                border = BorderStroke(1.dp, Color(0xFFF87171)),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = SemanticDanger400),
+                border = BorderStroke(1.dp, SemanticDanger400),
                 contentPadding = PaddingValues(horizontal = 10.dp)
             ) {
                 Text(stringResource(R.string.friend_reject), fontSize = 11.sp)

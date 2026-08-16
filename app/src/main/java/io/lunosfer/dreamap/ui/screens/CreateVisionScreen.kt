@@ -111,12 +111,12 @@ fun CreateVisionScreen(
             if (errorMessage != null) {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(containerColor = Color(0x33EF4444)),
-                    border = BorderStroke(1.dp, Color(0xFFEF4444))
+                    colors = CardDefaults.cardColors(containerColor = SemanticDanger500.copy(alpha = 0.2f)),
+                    border = BorderStroke(1.dp, SemanticDanger500)
                 ) {
                     Text(
                         text = errorMessage!!,
-                        color = Color(0xFFF87171),
+                        color = SemanticDanger400,
                         fontSize = 13.sp,
                         modifier = Modifier.padding(12.dp)
                     )

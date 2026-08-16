@@ -300,7 +300,7 @@ fun DiaryStoryViewerScreen(
                                         Icon(
                                             Icons.Default.Delete,
                                             contentDescription = "Sil",
-                                            tint = Color(0xFFF87171)
+                                            tint = SemanticDanger400
                                         )
                                     }
                                 }

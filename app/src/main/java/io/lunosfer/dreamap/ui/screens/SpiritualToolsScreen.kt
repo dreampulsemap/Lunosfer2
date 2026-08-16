@@ -259,11 +259,11 @@ private fun MentalWallSection(
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(16.dp),
                         colors = CardDefaults.cardColors(containerColor = Void900),
-                        border = BorderStroke(1.dp, Color(0xFFF87171).copy(alpha = 0.5f))
+                        border = BorderStroke(1.dp, SemanticDanger400.copy(alpha = 0.5f))
                     ) {
                         Text(
                             text = state.message,
-                            color = Color(0xFFF87171),
+                            color = SemanticDanger400,
                             fontSize = 13.sp,
                             modifier = Modifier.padding(16.dp)
                         )
@@ -431,7 +431,7 @@ private fun PsycheMapSection(
             }
             is PsycheMapUiState.Error -> {
                 item {
-                    Text(state.message, color = Color(0xFFF87171), fontSize = 13.sp)
+                    Text(state.message, color = SemanticDanger400, fontSize = 13.sp)
                 }
             }
             is PsycheMapUiState.Idle -> {}
@@ -571,7 +571,7 @@ private fun ProphetSection(
             }
             is ProphetUiState.Error -> {
                 item {
-                    Text(state.message, color = Color(0xFFF87171), fontSize = 13.sp)
+                    Text(state.message, color = SemanticDanger400, fontSize = 13.sp)
                 }
             }
             is ProphetUiState.Idle -> {}

@@ -339,7 +339,7 @@ private fun MessageBubble(message: Message, isOwn: Boolean, onReact: (String) ->
                     Icon(
                         imageVector = if (message.isRead) Icons.Filled.DoneAll else Icons.Filled.Done,
                         contentDescription = if (message.isRead) stringResource(R.string.thread_msg_read) else stringResource(R.string.thread_msg_sent),
-                        tint = if (message.isRead) Color(0xFF34D399) else Color(0xFF64748B),
+                        tint = if (message.isRead) SemanticSuccess400 else Color(0xFF64748B),
                         modifier = Modifier.size(12.dp)
                     )
                 }

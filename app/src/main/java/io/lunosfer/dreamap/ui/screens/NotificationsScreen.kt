@@ -96,7 +96,7 @@ fun NotificationsScreen(
                             .padding(24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(text = s.message, color = Color(0xFFF87171))
+                        Text(text = s.message, color = SemanticDanger400)
                         Spacer(Modifier.height(12.dp))
                         OutlinedButton(
                             onClick = { viewModel.loadNotifications() },

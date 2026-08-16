@@ -337,7 +337,7 @@ private fun DailyCompassCard(
                 }
                 is CompassUiState.Error -> {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(compassState.message, color = Color(0xFFF87171), fontSize = 12.sp)
+                        Text(compassState.message, color = SemanticDanger400, fontSize = 12.sp)
                         Button(
                             onClick = onFetchCompass,
                             colors = ButtonDefaults.buttonColors(containerColor = Void800),

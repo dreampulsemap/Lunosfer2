@@ -213,7 +213,7 @@ private fun ConversationRow(conversation: Conversation, currentUserId: String?, 
                     Icon(
                         imageVector = if (conversation.lastMessage.isRead) Icons.Filled.DoneAll else Icons.Filled.Done,
                         contentDescription = null,
-                        tint = if (conversation.lastMessage.isRead) Color(0xFF34D399) else Color(0xFF64748B),
+                        tint = if (conversation.lastMessage.isRead) SemanticSuccess400 else Color(0xFF64748B),
                         modifier = Modifier.size(14.dp)
                     )
                     Spacer(modifier = Modifier.width(4.dp))

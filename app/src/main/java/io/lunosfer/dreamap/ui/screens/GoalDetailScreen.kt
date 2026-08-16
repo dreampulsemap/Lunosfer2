@@ -86,7 +86,7 @@ fun GoalDetailScreen(
                             .padding(24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(text = s.message, color = Color(0xFFF87171))
+                        Text(text = s.message, color = SemanticDanger400)
                         Spacer(Modifier.height(16.dp))
                         OutlinedButton(
                             onClick = { viewModel.loadGoal() },
@@ -236,7 +236,7 @@ private fun GoalDetailContent(
                 }
                 if (isOwner) {
                     IconButton(onClick = { showDeleteDialog = true }) {
-                        Icon(Icons.Filled.Delete, contentDescription = null, tint = Color(0xFFF87171))
+                        Icon(Icons.Filled.Delete, contentDescription = null, tint = SemanticDanger400)
                     }
                 }
             }
@@ -292,7 +292,7 @@ private fun GoalDetailContent(
                         if (!goal.coverImageUrl.isNullOrBlank()) {
                             AssistChip(
                                 onClick = { onRemoveImage(goal.coverImageUrl) },
-                                label = { Text("\uD83D\uDDD1\uFE0F", fontSize = 10.sp, color = Color(0xFFF87171)) },
+                                label = { Text("\uD83D\uDDD1\uFE0F", fontSize = 10.sp, color = SemanticDanger400) },
                                 colors = AssistChipDefaults.assistChipColors(containerColor = Void800)
                             )
                         }
@@ -355,7 +355,7 @@ private fun GoalDetailContent(
                         else -> stringResource(R.string.goal_detail_status_active)
                     }
                     val statusBg = when (goal.status) {
-                        "completed" -> Color(0xFF10B981)
+                        "completed" -> SemanticSuccess500
                         "abandoned" -> Color(0xFF6B7280)
                         else -> AetherViolet
                     }
@@ -609,7 +609,7 @@ private fun GoalDetailContent(
                         onDeleteGoal()
                     }
                 ) {
-                    Text(stringResource(R.string.goal_detail_delete_btn), color = Color(0xFFF87171))
+                    Text(stringResource(R.string.goal_detail_delete_btn), color = SemanticDanger400)
                 }
             },
             dismissButton = {
@@ -812,7 +812,7 @@ private fun UpdateGoalStatusDialog(
                         onClick = { selectedStatus = "completed" },
                         label = { Text(stringResource(R.string.goal_detail_completed_chip), fontSize = 12.sp) },
                         colors = FilterChipDefaults.filterChipColors(
-                            selectedContainerColor = Color(0xFF10B981),
+                            selectedContainerColor = SemanticSuccess500,
                             selectedLabelColor = Color.White
                         )
                     )

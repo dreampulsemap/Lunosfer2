@@ -348,7 +348,7 @@ fun TopBar(
                         badge = {
                             if (unreadCount > 0) {
                                 Badge(
-                                    containerColor = Color(0xFFEF4444),
+                                    containerColor = SemanticDanger500,
                                     contentColor = Color.White
                                 ) {
                                     Text(if (unreadCount > 99) "99+" else "$unreadCount", fontSize = 10.sp)

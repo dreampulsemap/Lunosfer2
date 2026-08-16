@@ -102,7 +102,7 @@ fun PublicProfileScreen(
                             .padding(24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(text = s.message, color = Color(0xFFF87171))
+                        Text(text = s.message, color = SemanticDanger400)
                         Spacer(Modifier.height(12.dp))
                         OutlinedButton(
                             onClick = { viewModel.loadProfile(0) },
@@ -411,7 +411,7 @@ private fun PublicDreamCard(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(2.dp)
                     ) {
-                        Icon(Icons.Default.Favorite, contentDescription = null, tint = Color(0xFFF87171), modifier = Modifier.size(12.dp))
+                        Icon(Icons.Default.Favorite, contentDescription = null, tint = SemanticDanger400, modifier = Modifier.size(12.dp))
                         Text("${dream.likesCount ?: 0}", color = Color.Gray, fontSize = 11.sp)
                     }
 

@@ -117,7 +117,7 @@ fun ProfileScreen(
                         .padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(s.message, color = Color(0xFFF87171))
+                    Text(s.message, color = SemanticDanger400)
                     Spacer(Modifier.height(12.dp))
                     Button(
                         onClick = { viewModel.loadData() },
@@ -577,14 +577,14 @@ private fun PremiumStatusCard(status: PremiumStatusResponse, onUpgradeClick: () 
                     if (!status.canPickVideo) {
                         val formattedDate = formatNextAvailableDate(status.nextAvailableAt, stringResource(R.string.profile_date_soon))                        Text(
                             text = stringResource(R.string.profile_free_video_wait, formattedDate),
-                            color = Color(0xFFF87171),
+                            color = SemanticDanger400,
                             fontSize = 12.sp,
                             lineHeight = 16.sp
                         )
                     } else {
                         Text(
                             text = stringResource(R.string.profile_free_video_ready),
-                            color = Color(0xFF4ADE80),
+                            color = SemanticSuccess400,
                             fontSize = 12.sp
                         )
                     }

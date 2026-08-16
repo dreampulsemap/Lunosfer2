@@ -99,7 +99,7 @@ fun DreamDetailScreen(
                             .padding(24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(text = "Hata: ${s.message}", color = Color(0xFFF87171))
+                        Text(text = "Hata: ${s.message}", color = SemanticDanger400)
                         Spacer(Modifier.height(16.dp))
                         OutlinedButton(
                             onClick = { viewModel.loadDream(dreamId) },
@@ -270,7 +270,7 @@ fun DreamDetailContent(
                         Icon(Icons.Filled.Edit, contentDescription = stringResource(R.string.dream_detail_edit_btn), tint = AstralGold, modifier = Modifier.size(18.dp))
                     }
                     IconButton(onClick = { showDeleteDialog = true }, modifier = Modifier.size(32.dp)) {
-                        Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.dream_detail_delete_btn), tint = Color(0xFFF87171), modifier = Modifier.size(18.dp))
+                        Icon(Icons.Filled.Delete, contentDescription = stringResource(R.string.dream_detail_delete_btn), tint = SemanticDanger400, modifier = Modifier.size(18.dp))
                     }
                 }
             }
@@ -355,12 +355,12 @@ fun DreamDetailContent(
                 Icon(
                     imageVector = if (state.isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                     contentDescription = stringResource(R.string.dream_detail_like_cd),
-                    tint = if (state.isLiked) Color(0xFFEF4444) else Color(0xFF94A3B8),
+                    tint = if (state.isLiked) SemanticDanger500 else Color(0xFF94A3B8),
                     modifier = Modifier.size(20.dp)
                 )
                 Text(
                     text = "${state.likesCount}",
-                    color = if (state.isLiked) Color(0xFFEF4444) else Color.White,
+                    color = if (state.isLiked) SemanticDanger500 else Color.White,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -455,7 +455,7 @@ fun DreamDetailContent(
                         onDeleteDream(false) // Hard delete
                     }
                 ) {
-                    Text(stringResource(R.string.dream_detail_delete_permanent), color = Color(0xFFF87171))
+                    Text(stringResource(R.string.dream_detail_delete_permanent), color = SemanticDanger400)
                 }
             },
             dismissButton = {
@@ -708,7 +708,7 @@ private fun EditDreamDialog(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 if (errorMessage != null) {
-                    Text(errorMessage!!, color = Color(0xFFF87171), fontSize = 12.sp)
+                    Text(errorMessage!!, color = SemanticDanger400, fontSize = 12.sp)
                 }
 
                 OutlinedTextField(
@@ -843,7 +843,7 @@ private fun AddBountyDialog(
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(stringResource(R.string.dream_detail_bounty_desc), color = Color.LightGray, fontSize = 13.sp)
                 if (errorText != null) {
-                    Text(errorText!!, color = Color(0xFFF87171), fontSize = 12.sp)
+                    Text(errorText!!, color = SemanticDanger400, fontSize = 12.sp)
                 }
                 OutlinedTextField(
                     value = amountText,
@@ -1275,7 +1275,7 @@ private fun DreamAnalysisCardPage(
                     ) {
                         Text(
                             text = stringResource(io.lunosfer.dreamap.R.string.dream_analysis_failed),
-                            color = Color(0xFFF87171),
+                            color = SemanticDanger400,
                             fontSize = 13.sp
                         )
                         Spacer(Modifier.height(12.dp))
