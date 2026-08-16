@@ -191,7 +191,7 @@ fun ReferralCard(
                     }
                 }
                 is ReferralUiState.Error -> {
-                    Text(text = s.message, color = Color(0xFFF87171), fontSize = 12.sp)
+                    Text(text = s.message, color = SemanticDanger400, fontSize = 12.sp)
                 }
                 is ReferralUiState.Idle -> {}
             }

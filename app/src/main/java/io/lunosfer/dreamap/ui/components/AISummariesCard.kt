@@ -159,7 +159,7 @@ fun AISummariesCard(
                     ) {
                         Text(
                             text = currentState.message,
-                            color = Color(0xFFF87171),
+                            color = SemanticDanger400,
                             fontSize = 12.sp,
                             textAlign = TextAlign.Center
                         )
