@@ -47,7 +47,8 @@ import io.lunosfer.dreamap.ui.viewmodel.GoalDetailViewModel
 fun GoalDetailScreen(
     goalId: String,
     onBack: () -> Unit,
-    onUserClick: ((String) -> Unit)? = null
+    onUserClick: ((String) -> Unit)? = null,
+    onOpenReelsEditor: ((String) -> Unit)? = null
 ) {
     val factory = remember(goalId) { GoalDetailViewModel.Factory(goalId) }
     val viewModel: GoalDetailViewModel = viewModel(factory = factory)
@@ -289,6 +290,20 @@ private fun GoalDetailContent(
                             label = { Text(stringResource(R.string.goal_detail_url_label), fontSize = 10.sp, color = Color.White) },
                             colors = AssistChipDefaults.assistChipColors(containerColor = Void800)
                         )
+                        if (onOpenReelsEditor != null) {
+                            AssistChip(
+                                onClick = { onOpenReelsEditor(goalId) },
+                                label = {
+                                    Text(
+                                        stringResource(
+                                            if (goal.visionVideoUrl.isNullOrBlank()) R.string.goalDetail_addReel else R.string.goalDetail_editReel
+                                        ),
+                                        fontSize = 10.sp, color = BrandPrimary500
+                                    )
+                                },
+                                colors = AssistChipDefaults.assistChipColors(containerColor = Void800)
+                            )
+                        }
                         if (!goal.coverImageUrl.isNullOrBlank()) {
                             AssistChip(
                                 onClick = { onRemoveImage(goal.coverImageUrl) },

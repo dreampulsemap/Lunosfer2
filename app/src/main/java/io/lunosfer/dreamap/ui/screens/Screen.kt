@@ -32,8 +32,11 @@ sealed class Screen(val route: String) {
     object DiaryStoryViewer : Screen("diary_viewer/{userId}") {
         fun routeFor(userId: String) = "diary_viewer/$userId"
     }
-    object DiaryJournal : Screen("diary_journal/{userId}") {
-        fun routeFor(userId: String) = "diary_journal/$userId"
-    }
     object SpiritualTools : Screen("spiritual_tools")
+
+    // Tam ekran Reels editörü — bottom nav/top bar'ın GÖRÜNMEDİĞİ route.
+    // Goal her zaman önceden var (GoalDetailScreen'den açılıyor).
+    object VideoEditor : Screen("video_editor/{goalId}") {
+        fun createRoute(goalId: String) = "video_editor/$goalId"
+    }
 }

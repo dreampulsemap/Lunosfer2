@@ -20,12 +20,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import io.lunosfer.dreamap.R
 import io.lunosfer.dreamap.supabase.supabaseClient
+import io.lunosfer.dreamap.ui.screens.videoeditor.VideoEditorScreen
 import io.lunosfer.dreamap.ui.theme.*
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.status.SessionStatus
@@ -90,7 +93,8 @@ fun MainScreen(
         Screen.Thread.route,
         Screen.AddFriend.route,
         Screen.Notifications.route,
-        Screen.PublicProfile.route
+        Screen.PublicProfile.route,
+        Screen.VideoEditor.route
     )
     val showTopBottomBars = currentRoute != Screen.Auth.route && currentRoute !in fullScreenRoutes
 
@@ -172,8 +176,16 @@ fun MainScreen(
                 GoalDetailScreen(
                     goalId = goalId,
                     onBack = { navController.popBackStack() },
-                    onUserClick = { userId -> navController.navigate(Screen.PublicProfile.createRoute(userId)) }
+                    onUserClick = { userId -> navController.navigate(Screen.PublicProfile.createRoute(userId)) },
+                    onOpenReelsEditor = { navController.navigate(Screen.VideoEditor.createRoute(goalId)) }
                 )
+            }
+            composable(
+                Screen.VideoEditor.route,
+                arguments = listOf(navArgument("goalId") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val goalId = backStackEntry.arguments?.getString("goalId") ?: return@composable
+                VideoEditorScreen(goalId = goalId, onClose = { navController.popBackStack() })
             }
             composable(Screen.Profile.route) {
                 val currentUserId = supabaseClient.auth.currentSessionOrNull()?.user?.id ?: ""
