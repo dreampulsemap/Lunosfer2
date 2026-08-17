@@ -131,6 +131,13 @@ dependencies {
   implementation("androidx.appcompat:appcompat:1.6.1")
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
+  // Reels editör: tam ekran önizleme + export (bkz. ui/screens/videoeditor/)
+  implementation(libs.media3.exoplayer)
+  implementation(libs.media3.ui)
+  implementation(libs.media3.effect)
+  implementation(libs.media3.transformer)
+  implementation(libs.media3.common)
+
   testImplementation(libs.androidx.compose.ui.test.junit4)
   testImplementation(libs.androidx.core)
   testImplementation(libs.androidx.junit)
