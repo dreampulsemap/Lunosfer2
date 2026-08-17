@@ -25,6 +25,9 @@ data class Goal(
     @SerialName("has_reacted") val hasReacted: Boolean? = false,
     @SerialName("has_saved") val hasSaved: Boolean? = false,
     @SerialName("slide_count") val slideCount: Int? = 0,
+    // Reels editöründen export edilip Storage'a yüklenen videonun public URL'i
+    // (pages/api/goals/save-vision-video.js tarafından yazılır).
+    @SerialName("vision_video_url") val visionVideoUrl: String? = null,
     @SerialName("target_date") val targetDate: String? = null,
     @SerialName("created_at") val createdAt: String,
     @SerialName("micro_goals") val microGoals: List<MicroGoal>? = null,
