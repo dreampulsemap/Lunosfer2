@@ -32,3 +32,6 @@ val SemanticDanger500 = Color(0xFFF43F5E)
 val SemanticSuccess400 = Color(0xFF34D399)
 val SemanticSuccess500 = Color(0xFF10B981)
 
+// Reels editörünün yüzen cam katmanları (video üstüne biniyor).
+val EditorGlass = Color(0x8C121826)      // rgba(18,24,38,0.55)
+val EditorGlassBorder = Color(0x29FFFFFF) // rgba(255,255,255,0.16)
