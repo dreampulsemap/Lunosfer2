@@ -146,6 +146,10 @@ interface LunosferApi {
     @POST("api/goals/create")
     suspend fun createGoal(@Body request: io.lunosfer.dreamap.data.model.CreateGoalRequest): io.lunosfer.dreamap.data.model.CreateGoalResponse
 
+    // Reels editörü: export edilip Storage'a yüklenen videoyu goal'a bağlar.
+    @POST("api/goals/save-vision-video")
+    suspend fun saveVisionVideo(@Body request: io.lunosfer.dreamap.data.model.SaveVisionVideoRequest): io.lunosfer.dreamap.data.model.SaveVisionVideoResponse
+
     @POST("api/goals/update-status")
     suspend fun updateGoalStatus(@Body request: io.lunosfer.dreamap.data.model.UpdateGoalStatusRequest): io.lunosfer.dreamap.data.model.UpdateGoalStatusResponse
 
