@@ -44,6 +44,7 @@ googleid = "1.1.1"
 supabase = "3.0.0"
 ktor = "3.0.0"
 uiTextGoogleFonts = "1.7.5"
+media3 = "1.5.0"
 billing = "9.1.0"
 
 
@@ -109,6 +110,14 @@ supabase-postgrest = { group = "io.github.jan-tennert.supabase", name = "postgre
 supabase-storage = { group = "io.github.jan-tennert.supabase", name = "storage-kt" }
 ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
+
+# Reels editör: canlı önizleme + export AYNI efekt zincirini kullanıyor (media3-effect),
+# Transformer ise EditedMediaItemSequence ile çoklu klip birleştirip MP4'e export ediyor.
+media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
+media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "media3" }
+media3-effect = { group = "androidx.media3", name = "media3-effect", version.ref = "media3" }
+media3-transformer = { group = "androidx.media3", name = "media3-transformer", version.ref = "media3" }
+media3-common = { group = "androidx.media3", name = "media3-common", version.ref = "media3" }
 
 
 [plugins]
