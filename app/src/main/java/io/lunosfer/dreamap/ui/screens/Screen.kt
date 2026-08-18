@@ -32,6 +32,22 @@ sealed class Screen(val route: String) {
     object DiaryStoryViewer : Screen("diary_viewer/{userId}") {
         fun routeFor(userId: String) = "diary_viewer/$userId"
     }
+    object DiaryJournal : Screen("diary_journal/{userId}") {
+        fun routeFor(userId: String) = "diary_journal/$userId"
+    }
+
+    // "Vizyonu İzle" — GoalDetailScreen'deki tek giriş noktası şu ikisinden
+    // birine yönlendirir: goal.visionVideoUrl varsa VisionVideoPlayer'a,
+    // yoksa (eski/video'suz vizyon) SlidesViewer'a (goal_slides fallback).
+    object VisionVideoPlayer : Screen("vision_video/{goalId}") {
+        fun createRoute(goalId: String) = "vision_video/$goalId"
+    }
+    object SlidesViewer : Screen("slides_viewer/{goalId}") {
+        fun createRoute(goalId: String) = "slides_viewer/$goalId"
+    }
+    object SlideCreator : Screen("slide_creator/{goalId}") {
+        fun createRoute(goalId: String) = "slide_creator/$goalId"
+    }
     object SpiritualTools : Screen("spiritual_tools")
 
     // Tam ekran Reels editörü — bottom nav/top bar'ın GÖRÜNMEDİĞİ route.

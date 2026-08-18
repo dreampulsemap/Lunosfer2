@@ -94,7 +94,10 @@ fun MainScreen(
         Screen.AddFriend.route,
         Screen.Notifications.route,
         Screen.PublicProfile.route,
-        Screen.VideoEditor.route
+        Screen.VideoEditor.route,
+        Screen.VisionVideoPlayer.route,
+        Screen.SlidesViewer.route,
+        Screen.SlideCreator.route
     )
     val showTopBottomBars = currentRoute != Screen.Auth.route && currentRoute !in fullScreenRoutes
 
@@ -177,7 +180,39 @@ fun MainScreen(
                     goalId = goalId,
                     onBack = { navController.popBackStack() },
                     onUserClick = { userId -> navController.navigate(Screen.PublicProfile.createRoute(userId)) },
-                    onOpenReelsEditor = { navController.navigate(Screen.VideoEditor.createRoute(goalId)) }
+                    onOpenReelsEditor = { navController.navigate(Screen.VideoEditor.createRoute(goalId)) },
+                    onWatchVideo = { navController.navigate(Screen.VisionVideoPlayer.createRoute(goalId)) },
+                    onWatchSlides = { navController.navigate(Screen.SlidesViewer.createRoute(goalId)) },
+                    onEditSlides = { navController.navigate(Screen.SlideCreator.createRoute(goalId)) }
+                )
+            }
+            composable(
+                Screen.SlideCreator.route,
+                arguments = listOf(navArgument("goalId") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val goalId = backStackEntry.arguments?.getString("goalId") ?: return@composable
+                SlideCreatorScreen(goalId = goalId, onBack = { navController.popBackStack() })
+            }
+            composable(
+                Screen.VisionVideoPlayer.route,
+                arguments = listOf(navArgument("goalId") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val goalId = backStackEntry.arguments?.getString("goalId") ?: return@composable
+                VisionVideoPlayerScreen(
+                    goalId = goalId,
+                    onBack = { navController.popBackStack() },
+                    onEdit = { navController.navigate(Screen.VideoEditor.createRoute(goalId)) }
+                )
+            }
+            composable(
+                Screen.SlidesViewer.route,
+                arguments = listOf(navArgument("goalId") { type = NavType.StringType })
+            ) { backStackEntry ->
+                val goalId = backStackEntry.arguments?.getString("goalId") ?: return@composable
+                SlidesViewerScreen(
+                    goalId = goalId,
+                    onBack = { navController.popBackStack() },
+                    onGoalClick = { gid -> navController.navigate(Screen.GoalDetail.createRoute(gid)) }
                 )
             }
             composable(
