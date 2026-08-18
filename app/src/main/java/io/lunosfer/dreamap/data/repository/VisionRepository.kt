@@ -1,5 +1,6 @@
 package io.lunosfer.dreamap.data.repository
 
+import io.github.jan.supabase.storage.storage
 import io.lunosfer.dreamap.data.model.*
 import io.lunosfer.dreamap.data.network.NetworkModule
 
@@ -57,6 +58,70 @@ class VisionRepository {
 
     suspend fun removeMana(goalId: String): Result<Unit> = runCatching {
         val res = api.removeMana(DeleteGoalRequest(goalId))
+        if (!res.success && !res.ok && res.error != null) {
+            throw Exception(res.error)
+        }
+        Unit
+    }
+
+    // --- Vizyon Slaytları (SlidesViewer fallback) ---
+
+    suspend fun loadGoalSlides(goalId: String): Result<GoalSlidesResponse> = runCatching {
+        api.getGoalSlides(goalId)
+    }
+
+    suspend fun deleteGoalSlide(slideId: String): Result<Unit> = runCatching {
+        val res = api.deleteGoalSlide(DeleteSlideRequest(slideId))
+        if (!res.success && !res.ok && res.error != null) {
+            throw Exception(res.error)
+        }
+        Unit
+    }
+
+    suspend fun toggleSlideSave(slideId: String): Result<Unit> = runCatching {
+        val res = api.toggleSlideSave(SaveSlideRequest(slideId))
+        if (!res.success && !res.ok && res.error != null) {
+            throw Exception(res.error)
+        }
+        Unit
+    }
+
+    // --- Slayt oluşturma/düzenleme ---
+
+    suspend fun uploadSlideImage(byteArray: ByteArray, fileName: String): Result<String> = runCatching {
+        val uniquePath = "${java.util.UUID.randomUUID()}_$fileName"
+        try {
+            val bucket = io.lunosfer.dreamap.supabase.supabaseClient.storage.from("goal-images")
+            bucket.upload(uniquePath, byteArray) { upsert = true }
+            bucket.publicUrl(uniquePath)
+        } catch (e: Exception) {
+            try {
+                val bucket = io.lunosfer.dreamap.supabase.supabaseClient.storage.from("dreams")
+                bucket.upload(uniquePath, byteArray) { upsert = true }
+                bucket.publicUrl(uniquePath)
+            } catch (_: Exception) {
+                throw e
+            }
+        }
+    }
+
+    suspend fun createGoalSlide(
+        goalId: String,
+        imageUrl: String,
+        caption: String? = null,
+        durationSeconds: Int? = null
+    ): Result<GoalSlide> = runCatching {
+        val res = api.createGoalSlide(CreateSlideRequest(goalId, imageUrl, caption, durationSeconds))
+        res.slide ?: throw Exception(res.error ?: "Slayt oluşturulamadı")
+    }
+
+    suspend fun updateGoalSlide(request: UpdateSlideRequest): Result<GoalSlide> = runCatching {
+        val res = api.updateGoalSlide(request)
+        res.slide ?: throw Exception(res.error ?: "Slayt güncellenemedi")
+    }
+
+    suspend fun reorderGoalSlides(goalId: String, orderedSlideIds: List<String>): Result<Unit> = runCatching {
+        val res = api.reorderGoalSlides(ReorderSlidesRequest(goalId, orderedSlideIds))
         if (!res.success && !res.ok && res.error != null) {
             throw Exception(res.error)
         }
