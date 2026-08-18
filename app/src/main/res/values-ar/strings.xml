@@ -14,6 +14,8 @@
     <string name="auth_register_title">إنشاء حسابك</string>
     <string name="auth_email">البريد الإلكتروني</string>
     <string name="auth_password">كلمة المرور</string>
+    <string name="auth_show_password">إظهار كلمة المرور</string>
+    <string name="auth_hide_password">إخفاء كلمة المرور</string>
     <string name="auth_username">اسم المستخدم</string>
     <string name="auth_username_required">اسم المستخدم مطلوب.</string>
     <string name="auth_login">تسجيل الدخول</string>
@@ -383,6 +385,11 @@
     <string name="toast_sign_in_required">يجب تسجيل الدخول قبل المشاركة.</string>
     <string name="toast_pixabay_import_failed_format">تعذّرت إضافة فيديو Pixabay: %1$s</string>
     <string name="toast_pixabay_generic_error">تعذّر استيراد الفيديو.</string>
+    <string name="goal_detail_edit_slides">✏️ تعديل الشرائح</string>
+    <string name="goal_detail_watch_vision">▶ شاهد الرؤية</string>
+    <string name="error_slides_not_found">لا توجد شرائح لهذه الرؤية.</string>
+    <string name="error_slides_load">فشل تحميل الشرائح</string>
+    <string name="error_video_not_found">لا يوجد فيديو لهذه الرؤية.</string>
     <string name="goalDetail_addReel">🎬 إضافة ريلز</string>
     <string name="goalDetail_editReel">🎬 تعديل الريلز</string>
 </resources>
