@@ -174,6 +174,26 @@ interface LunosferApi {
     @HTTP(method = "DELETE", path = "api/goals/comment", hasBody = true)
     suspend fun deleteGoalComment(@Body request: io.lunosfer.dreamap.data.model.DeleteGoalCommentRequest): io.lunosfer.dreamap.data.model.GenericSuccessResponse
 
+    // --- Vizyon Slaytları (SlidesViewer fallback — sadece okuma) ---
+
+    @GET("api/goals/slides/list")
+    suspend fun getGoalSlides(@Query("goalId") goalId: String): io.lunosfer.dreamap.data.model.GoalSlidesResponse
+
+    @POST("api/goals/slides/delete")
+    suspend fun deleteGoalSlide(@Body request: io.lunosfer.dreamap.data.model.DeleteSlideRequest): io.lunosfer.dreamap.data.model.GenericSuccessResponse
+
+    @POST("api/goals/slides/save")
+    suspend fun toggleSlideSave(@Body request: io.lunosfer.dreamap.data.model.SaveSlideRequest): io.lunosfer.dreamap.data.model.GenericSuccessResponse
+
+    @POST("api/goals/slides/create")
+    suspend fun createGoalSlide(@Body request: io.lunosfer.dreamap.data.model.CreateSlideRequest): io.lunosfer.dreamap.data.model.CreateSlideResponse
+
+    @POST("api/goals/slides/update")
+    suspend fun updateGoalSlide(@Body request: io.lunosfer.dreamap.data.model.UpdateSlideRequest): io.lunosfer.dreamap.data.model.UpdateSlideResponse
+
+    @POST("api/goals/slides/reorder")
+    suspend fun reorderGoalSlides(@Body request: io.lunosfer.dreamap.data.model.ReorderSlidesRequest): io.lunosfer.dreamap.data.model.GenericSuccessResponse
+
     // --- Friends / Social ---
 
     @GET("api/friends/list")
