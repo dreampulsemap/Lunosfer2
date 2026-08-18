@@ -14,6 +14,8 @@
     <string name="auth_register_title">Hesabınızı Oluşturun</string>
     <string name="auth_email">E-posta</string>
     <string name="auth_password">Şifre</string>
+    <string name="auth_show_password">Şifreyi göster</string>
+    <string name="auth_hide_password">Şifreyi gizle</string>
     <string name="auth_username">Kullanıcı Adı</string>
     <string name="auth_username_required">Kullanıcı adı gereklidir.</string>
     <string name="auth_login">Giriş Yap</string>
@@ -397,6 +399,11 @@
     <string name="toast_sign_in_required">Paylaşmak için önce giriş yapmalısın.</string>
     <string name="toast_pixabay_import_failed_format">Pixabay videosu eklenemedi: %1$s</string>
     <string name="toast_pixabay_generic_error">Video içe aktarılamadı.</string>
+    <string name="goal_detail_edit_slides">✏️ Slaytları Düzenle</string>
+    <string name="goal_detail_watch_vision">▶ Vizyonu İzle</string>
+    <string name="error_slides_not_found">Bu vizyonun slaytı yok.</string>
+    <string name="error_slides_load">Slaytlar yüklenemedi</string>
+    <string name="error_video_not_found">Bu vizyonun videosu yok.</string>
     <string name="goalDetail_addReel">🎬 Reels Ekle</string>
     <string name="goalDetail_editReel">🎬 Reels\'i Düzenle</string>
 </resources>
