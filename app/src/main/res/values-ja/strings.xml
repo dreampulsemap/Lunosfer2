@@ -14,6 +14,8 @@
     <string name="auth_register_title">アカウント作成</string>
     <string name="auth_email">メールアドレス</string>
     <string name="auth_password">パスワード</string>
+    <string name="auth_show_password">パスワードを表示</string>
+    <string name="auth_hide_password">パスワードを非表示</string>
     <string name="auth_username">ユーザー名</string>
     <string name="auth_username_required">ユーザー名は必須です。</string>
     <string name="auth_login">ログイン</string>
@@ -381,6 +383,11 @@
     <string name="toast_sign_in_required">シェアする前にサインインしてください。</string>
     <string name="toast_pixabay_import_failed_format">Pixabayの動画を追加できませんでした: %1$s</string>
     <string name="toast_pixabay_generic_error">動画をインポートできませんでした。</string>
+    <string name="goal_detail_edit_slides">✏️ スライドを編集</string>
+    <string name="goal_detail_watch_vision">▶ ビジョンを見る</string>
+    <string name="error_slides_not_found">このビジョンにはスライドがありません。</string>
+    <string name="error_slides_load">スライドを読み込めませんでした</string>
+    <string name="error_video_not_found">このビジョンには動画がありません。</string>
     <string name="goalDetail_addReel">🎬 リールを追加</string>
     <string name="goalDetail_editReel">🎬 リールを編集</string>
 </resources>
