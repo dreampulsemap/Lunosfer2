@@ -14,6 +14,8 @@
     <string name="auth_register_title">Konto erstellen</string>
     <string name="auth_email">E-Mail</string>
     <string name="auth_password">Passwort</string>
+    <string name="auth_show_password">Passwort anzeigen</string>
+    <string name="auth_hide_password">Passwort verbergen</string>
     <string name="auth_username">Benutzername</string>
     <string name="auth_username_required">Benutzername ist erforderlich.</string>
     <string name="auth_login">Anmelden</string>
@@ -384,6 +386,11 @@
     <string name="toast_sign_in_required">Du musst dich anmelden, bevor du teilen kannst.</string>
     <string name="toast_pixabay_import_failed_format">Pixabay-Video konnte nicht hinzugefügt werden: %1$s</string>
     <string name="toast_pixabay_generic_error">Video konnte nicht importiert werden.</string>
+    <string name="goal_detail_edit_slides">✏️ Slides bearbeiten</string>
+    <string name="goal_detail_watch_vision">▶ Vision ansehen</string>
+    <string name="error_slides_not_found">Diese Vision hat keine Slides.</string>
+    <string name="error_slides_load">Slides konnten nicht geladen werden</string>
+    <string name="error_video_not_found">Diese Vision hat kein Video.</string>
     <string name="goalDetail_addReel">🎬 Reel hinzufügen</string>
     <string name="goalDetail_editReel">🎬 Reel bearbeiten</string>
 </resources>
