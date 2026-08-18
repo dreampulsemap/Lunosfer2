@@ -14,6 +14,8 @@
     <string name="auth_register_title">创建您的账户</string>
     <string name="auth_email">电子邮件</string>
     <string name="auth_password">密码</string>
+    <string name="auth_show_password">显示密码</string>
+    <string name="auth_hide_password">隐藏密码</string>
     <string name="auth_username">用户名</string>
     <string name="auth_username_required">需要用户名。</string>
     <string name="auth_login">登录</string>
@@ -383,6 +385,11 @@
     <string name="toast_sign_in_required">分享前需要先登录。</string>
     <string name="toast_pixabay_import_failed_format">无法添加 Pixabay 视频：%1$s</string>
     <string name="toast_pixabay_generic_error">无法导入视频。</string>
+    <string name="goal_detail_edit_slides">✏️ 编辑幻灯片</string>
+    <string name="goal_detail_watch_vision">▶ 观看愿景</string>
+    <string name="error_slides_not_found">这个愿景还没有幻灯片。</string>
+    <string name="error_slides_load">加载幻灯片失败</string>
+    <string name="error_video_not_found">这个愿景还没有视频。</string>
     <string name="goalDetail_addReel">🎬 添加 Reel</string>
     <string name="goalDetail_editReel">🎬 编辑 Reel</string>
 </resources>
